@@ -1,15 +1,14 @@
 //
-//  ViewController.h
+//  Redmadrobot.pch
 //  Redmadrobot
 //
 //  Created by Dmitry Shashlov on 11/18/14.
 //  Copyright (c) 2014 Dmitry Shashlov. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#ifdef __OBJC__
 
-@interface ViewController : UIViewController
+  #define kGridSize 8.0f
+  #import <ReactiveCocoa/ReactiveCocoa.h>
 
-
-@end
-
+#endif
