@@ -28,9 +28,8 @@
 
   // Collage controller
   RMCollage *collage = [[RMCollage alloc] initWithSize:@3];
-  RMCollageViewModel *collageViewModel = [[RMCollageViewModel alloc] initWithCollage:collage];
-  RMCollageViewController *collageController = [[RMCollageViewController alloc] initWithCollageViewModel:collageViewModel
-                                                                                          productionStep:RMCollageProductionStepGrid];
+  RMCollageViewController *collageController = [[RMCollageViewController alloc] initWithCollage:collage
+                                                                                 productionStep:RMCollageProductionStepGrid];
   UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:collageController];
   self.window.rootViewController = navController;
   

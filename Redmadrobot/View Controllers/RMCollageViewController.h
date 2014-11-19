@@ -15,9 +15,10 @@
 
 @interface RMCollageViewController : UIViewController
 
-- (id)initWithCollageViewModel:(RMCollageViewModel *)collageViewModel productionStep:(RMCollageProductionStep)step;
+- (id)initWithCollage:(RMCollage *)collage productionStep:(RMCollageProductionStep)step;
 
-@property (nonatomic, readonly) RMCollageViewModel *collageViewModel;
+@property (nonatomic, readonly) RMCollage *collage;
 @property (nonatomic, readonly) RMCollageProductionStep step;
+@property (nonatomic, readonly) BOOL completed;
 
 @end

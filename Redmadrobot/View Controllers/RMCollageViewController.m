@@ -8,6 +8,7 @@
 
 #import "RMCollageViewController.h"
 #import <SpriteKit/SpriteKit.h>
+#import "RMCollageScene.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15,6 +16,9 @@
 
 @interface RMCollageViewController()
 @property (nonatomic) SKView *sceneView;
+@property (nonatomic) RMCollageViewModel *collageViewModel;
+@property (nonatomic) NSNumber *gridSize;
+@property (nonatomic, readwrite) BOOL completed;
 @end
 
 @implementation RMCollageViewController
@@ -24,12 +28,12 @@
 #pragma mark - Init
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithCollageViewModel:(RMCollageViewModel *)collageViewModel productionStep:(RMCollageProductionStep)step;
+- (id)initWithCollage:(RMCollage *)collage productionStep:(RMCollageProductionStep)step
 {
   self = [super init];
   if (self)
   {
-    _collageViewModel = collageViewModel;
+    _collage = collage;
     _step = step;
     
     // Title
@@ -46,6 +50,13 @@
         self.title = NSLocalizedString(@"Pick", nil);
         break;
     }
+    
+    // Next
+    UIBarButtonItem *nextItem = [[UIBarButtonItem alloc] initWithTitle:@"Next"
+                                                                 style:UIBarButtonItemStyleDone
+                                                                target:self
+                                                                action:@selector(actionNext:)];
+    self.navigationItem.rightBarButtonItem = nextItem;
   }
   return self;
 }
@@ -64,21 +75,81 @@
                                                         CGRectGetWidth(self.view.bounds),
                                                         CGRectGetWidth(self.view.bounds))];
   [self.view addSubview:_sceneView];
+  
+  // Slider
+  CGFloat collageOffset = (CGRectGetWidth(self.view.bounds) - kCollageSize.width) / 2;
+  UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(collageOffset,
+                                                                _sceneView.frame.origin.y + CGRectGetWidth(self.view.bounds) + collageOffset,
+                                                                kCollageSize.width,
+                                                                21.0f)];
+  slider.minimumValue = 2;
+  slider.maximumValue = 7;
+  [self.view addSubview:slider];
+  
+  // Observe control events
+  [[slider rac_signalForControlEvents:UIControlEventValueChanged]
+   subscribeNext:^(UISlider *slider) {
+     slider.value = roundf(slider.value);
+   }];
+  
+  // Observe value changing
+  [RACObserve(slider, value)
+   subscribeNext:^(NSNumber *value) {
+     self.gridSize = @(roundf(value.floatValue));
+   }];
+  slider.value = _collage.size.floatValue;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)viewWillLayoutSubviews
 {
   [super viewWillLayoutSubviews];
-  if (!_sceneView.scene)
+  
+  // Observe grid size changing
+  [[[RACObserve(self, gridSize) distinctUntilChanged]
+    filter:^BOOL(NSNumber *size) {
+      return size != nil;
+    }]
+   subscribeNext:^(NSNumber *size) {
+     self.collageViewModel = [[RMCollageViewModel alloc] initWithCollage:[[RMCollage alloc] initWithSize:size]];
+   }];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Setters
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)setCollageViewModel:(RMCollageViewModel *)collageViewModel
+{
+  if (_collageViewModel.collage.size != collageViewModel.collage.size)
   {
-    // _sceneView.showsFPS = YES;
-    // _sceneView.showsNodeCount = YES;
-    
-    SKScene *scene = [_collageViewModel sceneForProductionStep:_step withSize:_sceneView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
-    [_sceneView presentScene:scene];
+    _collageViewModel = collageViewModel;
+    if (self.isViewLoaded)
+      [self presentScene];
   }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Private
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)presentScene
+{
+  SKScene *scene = [_collageViewModel sceneForProductionStep:_step withSize:_sceneView.bounds.size];
+  scene.scaleMode = SKSceneScaleModeAspectFill;
+  [_sceneView presentScene:scene];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Actions
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)actionNext:(id)sender
+{
+  self.completed = YES;  
 }
 
 @end

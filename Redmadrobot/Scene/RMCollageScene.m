@@ -8,7 +8,8 @@
 
 #import "RMCollageScene.h"
 
-static CGSize kCollageSize = { 288.0f , 288.0f };
+static CGFloat kDashLength = 10.0f;
+CGSize kCollageSize = { 288.0f , 288.0f };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,17 +43,16 @@ static CGSize kCollageSize = { 288.0f , 288.0f };
     NSMutableArray *lines = [[NSMutableArray alloc] initWithObjects:_perimeterNode, nil];
     for (int i = 1; i < collage.size.intValue; i++) {
       CGFloat gridStep = i * (kCollageSize.width / collage.size.intValue);
-      CGFloat linePadding = (size.height - kCollageSize.height) / 4;
 
       // Vertical points
       CGPoint verticalPoints[2];
-      verticalPoints[0] = CGPointMake(gridStep, -linePadding);
-      verticalPoints[1] = CGPointMake(gridStep, kCollageSize.height + linePadding);
+      verticalPoints[0] = CGPointMake(gridStep, 0.0f);
+      verticalPoints[1] = CGPointMake(gridStep, kCollageSize.height);
       
       // Horizontal points
       CGPoint horizontalPoints[2];
-      horizontalPoints[0] = CGPointMake(-linePadding, gridStep);
-      horizontalPoints[1] = CGPointMake(kCollageSize.width + linePadding, gridStep);
+      horizontalPoints[0] = CGPointMake(0.0f, gridStep);
+      horizontalPoints[1] = CGPointMake(kCollageSize.width, gridStep);
 
       SKShapeNode *verticalLine = [SKShapeNode shapeNodeWithPoints:verticalPoints count:sizeof(verticalPoints) / sizeof(CGPoint)];
       SKShapeNode *horizontalLine = [SKShapeNode shapeNodeWithPoints:horizontalPoints count:sizeof(horizontalPoints) / sizeof(CGPoint)];
@@ -70,9 +70,10 @@ static CGSize kCollageSize = { 288.0f , 288.0f };
       
       // Dash
       CGFloat pattern[2];
-      pattern[0] = 10.0;
-      pattern[1] = 10.0;
-      CGPathRef dashed = CGPathCreateCopyByDashingPath(lineNode.path, NULL, 0, pattern, 2);
+      pattern[0] = kDashLength;
+      pattern[1] = kDashLength;
+      CGFloat phase = arc4random_uniform(kDashLength * sizeof(pattern) / sizeof(CGFloat));
+      CGPathRef dashed = CGPathCreateCopyByDashingPath(lineNode.path, NULL, phase, pattern, 2);
       lineNode.path = dashed;
     }
   }
