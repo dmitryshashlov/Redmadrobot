@@ -15,7 +15,7 @@
 
 @interface RMGroupNode : SKShapeNode
 
-- (id)initWithCollageGroup:(RMCollageGroup *)group;
++ (RMGroupNode *)nodeWithGroup:(RMCollageGroup *)group;
 
 @property (nonatomic, readonly) RMCollageGroup *group;
 

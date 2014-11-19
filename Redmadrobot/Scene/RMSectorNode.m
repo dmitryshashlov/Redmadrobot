@@ -13,6 +13,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+@interface RMSectorNode()
+@property (nonatomic, readwrite) RMCollageSector *sector;
+@end
+
 @implementation RMSectorNode
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,15 +24,12 @@
 #pragma mark - Init
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithSector:(RMCollageSector *)sector
++ (RMSectorNode *)nodeWithSector:(RMCollageSector *)sector
 {
-  self = [RMSectorNode shapeNodeWithRect:[RMCollageScene rectForIndexPath:sector.indexPath
-                                                          withCollageSize:sector.collage.size.intValue]];
-  if (self)
-  {
-    _sector = sector;
-  }
-  return self;
+  RMSectorNode *node = [RMSectorNode shapeNodeWithRect:[RMCollageScene rectForIndexPath:sector.indexPath
+                                                                        withCollageSize:sector.collage.size.intValue]];
+  node.sector = sector;
+  return node;
 }
 
 @end

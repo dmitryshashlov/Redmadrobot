@@ -23,6 +23,8 @@ CGSize kCollageSize = { 288.0f , 288.0f };
 @property (nonatomic) NSArray *selectedIndexPaths;
 @property (nonatomic) CGPoint selectionStartPoint;
 @property (nonatomic) SKShapeNode *selectionNode;
+@property (nonatomic) NSMutableDictionary *colors;
+@property (nonatomic) NSIndexPath *originIndexPath;
 @end
 
 @implementation RMCollageScene
@@ -40,17 +42,17 @@ CGSize kCollageSize = { 288.0f , 288.0f };
     _step = step;
     _collage = collage;
     self.backgroundColor = [UIColor whiteColor];
+    _colors = [[NSMutableDictionary alloc] init];
+    
+    CGRect perimeterRect = CGRectMake(0.0f, 0.0f, kCollageSize.width, kCollageSize.height);
     
     // Perimeter node
-    _perimeterNode = [SKShapeNode shapeNodeWithRect:CGRectMake(0.0f, 0.0f, kCollageSize.width, kCollageSize.height)];
+    _perimeterNode = [SKShapeNode shapeNodeWithRect:perimeterRect];
     _perimeterNode.position = CGPointMake((size.width - kCollageSize.width) / 2, (size.height - kCollageSize.height) / 2);
     _perimeterNode.strokeColor = [UIColor blackColor];
     _perimeterNode.lineWidth = 1.0f;
     [self addChild:_perimeterNode];
-    
-    // Configure
-    [self configureSceneForStep:_step];
-    
+        
     // Observe selected index paths
     [[RACObserve(self, selectedIndexPaths) distinctUntilChanged]
      subscribeNext:^(NSArray *selectedIndexPaths) {
@@ -74,6 +76,12 @@ CGSize kCollageSize = { 288.0f , 288.0f };
          [self addChild:_selectionNode];
        }
      }];
+    
+    // Observe group changing
+    [RACObserve(self.collage, groups)
+     subscribeNext:^(id x) {
+       [self configureSceneForStep:_step];
+     }];
   }
   return self;
 }
@@ -85,12 +93,14 @@ CGSize kCollageSize = { 288.0f , 288.0f };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)configureSceneForStep:(RMCollageProductionStep)step
 {
+  [_perimeterNode removeAllChildren];
+  
   // Configure nodes
   switch (step) {
     case RMCollageProductionStepGrid:
     {
       // Line nodes
-      NSMutableArray *lines = [[NSMutableArray alloc] initWithObjects:_perimeterNode, nil];
+      NSMutableArray *lines = [[NSMutableArray alloc] init];
       for (int i = 1; i < _collage.size.intValue; i++) {
         CGFloat gridStep = kCollageSize.width / _collage.size.intValue;
         
@@ -114,9 +124,7 @@ CGSize kCollageSize = { 288.0f , 288.0f };
       for (SKShapeNode *lineNode in lines) {
         lineNode.strokeColor = [UIColor blackColor];
         lineNode.lineWidth = 1.0f;
-        
-        if (lineNode != _perimeterNode)
-          [_perimeterNode addChild:lineNode];
+        [_perimeterNode addChild:lineNode];
         
         // Dash
         CGFloat pattern[2];
@@ -131,29 +139,30 @@ CGSize kCollageSize = { 288.0f , 288.0f };
       
     case RMCollageProductionStepWireframe:
     {
-      NSMutableArray *sectors = [[NSMutableArray alloc] initWithArray:_collage.sectors];
+      NSMutableArray *hiddenSectors = [[NSMutableArray alloc] init];
       
       // Group nodes
       for (RMCollageGroup *group in _collage.groups) {
         for (RMCollageSector *sector in group.sectors) {
-          [sectors removeObject:sector];
+          [hiddenSectors addObject:sector];
         }
         
-        SKShapeNode *groupNode = [[RMGroupNode alloc] initWithCollageGroup:group];
+        SKShapeNode *groupNode = [RMGroupNode nodeWithGroup:group];
         groupNode.strokeColor = [UIColor blackColor];
         groupNode.lineWidth = 1.0f;
+        groupNode.fillColor = [self colorForIndexPath:group.originSector.indexPath];
         [_perimeterNode addChild:groupNode];
       }
       
       // Sector nodes
-      for (RMCollageSector *sector in [NSArray arrayWithArray:sectors]) {
-        RMSectorNode *sectorNode = [[RMSectorNode alloc] initWithSector:sector];
+      for (RMCollageSector *sector in _collage.sectors) {
+        RMSectorNode *sectorNode = [RMSectorNode nodeWithSector:sector];
         sectorNode.strokeColor = [UIColor blackColor];
         sectorNode.lineWidth = 1.0f;
-        sectorNode.fillColor = [UIColor colorWithRed:arc4random_uniform(255.0f) / 255.0f
-                                               green:arc4random_uniform(255.0f) / 255.0f
-                                                blue:arc4random_uniform(255.0f) / 255.0f
-                                               alpha:0.5f];
+        sectorNode.fillColor = [self colorForIndexPath:sector.indexPath];
+        if ([hiddenSectors containsObject:sector])
+          sectorNode.hidden = YES;
+        
         [_perimeterNode addChild:sectorNode];
       }
       
@@ -174,43 +183,50 @@ CGSize kCollageSize = { 288.0f , 288.0f };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  UITouch *touch = [touches anyObject];
-  CGPoint positionInScene = [touch locationInNode:self];
-  SKShapeNode *node = (SKShapeNode *)[self nodeAtPoint:positionInScene];
-  
-  self.selectionStartPoint = positionInScene;
-  
-  // Log
-  if ([node isKindOfClass:[RMSectorNode class]])
+  if (_step == RMCollageProductionStepWireframe)
   {
-    RMSectorNode *sectorNode = (RMSectorNode *)node;
-    NSIndexPath *indexPath = sectorNode.sector.indexPath;
-    self.selectedIndexPaths = @[sectorNode.sector.indexPath];
-    NSLog(@"Touch started: %d, %d", indexPath.section, indexPath.row);
-  }
-  else if ([node isKindOfClass:[RMGroupNode class]])
-  {
-    RMGroupNode *groupNode = (RMGroupNode *)node;
-    //
+    UITouch *touch = [touches anyObject];
+    CGPoint positionInScene = [touch locationInNode:_perimeterNode];
+    
+    RMSectorNode *sectorNode = [self sectorNodeAtPoint:positionInScene];
+    if (sectorNode)
+    {
+      self.selectionStartPoint = positionInScene;
+      self.selectedIndexPaths = @[sectorNode.sector.indexPath];
+      self.originIndexPath = sectorNode.sector.indexPath;
+    }
   }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  UITouch *touch = [touches anyObject];
-  CGPoint positionInScene = [touch locationInNode:self];
-  self.selectedIndexPaths = [self indexPathsForRect:CGRectMake(MIN(_selectionStartPoint.x, positionInScene.x),
-                                                               MIN(_selectionStartPoint.y, positionInScene.y),
-                                                               fabs(_selectionStartPoint.x - positionInScene.x),
-                                                               fabs(_selectionStartPoint.y - positionInScene.y))];
+  if (_step == RMCollageProductionStepWireframe
+      && _originIndexPath)
+  {
+    UITouch *touch = [touches anyObject];
+    CGPoint positionInScene = [touch locationInNode:_perimeterNode];
+    self.selectedIndexPaths = [self indexPathsForRect:CGRectMake(MIN(_selectionStartPoint.x, positionInScene.x),
+                                                                 MIN(_selectionStartPoint.y, positionInScene.y),
+                                                                 fabs(_selectionStartPoint.x - positionInScene.x),
+                                                                 fabs(_selectionStartPoint.y - positionInScene.y))];
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-  self.selectionStartPoint = CGPointZero;
-  self.selectedIndexPaths = nil;
+  if (_step == RMCollageProductionStepWireframe
+      && _originIndexPath)
+  {
+    // Group sectors
+    if (self.selectedIndexPaths.count > 1)
+      [_collage groupSectorsForIndexPaths:self.selectedIndexPaths originSectorIndexPath:_originIndexPath];
+
+    self.selectionStartPoint = CGPointZero;
+    self.selectedIndexPaths = nil;
+    self.originIndexPath = nil;
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -218,12 +234,22 @@ CGSize kCollageSize = { 288.0f , 288.0f };
 #pragma mark - Private
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (RMSectorNode *)sectorNodeAtPoint:(CGPoint)point
+{
+  for (SKNode *node in [_perimeterNode nodesAtPoint:point]) {
+    if ([node isKindOfClass:[RMSectorNode class]])
+      return (RMSectorNode *)node;
+  }
+  return nil;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSArray *)indexPathsForRect:(CGRect)frame
 {
-  SKNode *node1 = [self nodeAtPoint:CGPointMake(frame.origin.x, frame.origin.y)];
-  SKNode *node2 = [self nodeAtPoint:CGPointMake(frame.origin.x + frame.size.width, frame.origin.y)];
-  SKNode *node3 = [self nodeAtPoint:CGPointMake(frame.origin.x + frame.size.width, frame.origin.y + frame.size.height)];
-  SKNode *node4 = [self nodeAtPoint:CGPointMake(frame.origin.x, frame.origin.y + frame.size.height)];
+  SKNode *node1 = [self sectorNodeAtPoint:CGPointMake(frame.origin.x, frame.origin.y)];
+  SKNode *node2 = [self sectorNodeAtPoint:CGPointMake(frame.origin.x + frame.size.width, frame.origin.y)];
+  SKNode *node3 = [self sectorNodeAtPoint:CGPointMake(frame.origin.x + frame.size.width, frame.origin.y + frame.size.height)];
+  SKNode *node4 = [self sectorNodeAtPoint:CGPointMake(frame.origin.x, frame.origin.y + frame.size.height)];
   
   NSArray *nodes = @[node1, node2, node3, node4];
   
@@ -243,6 +269,23 @@ CGSize kCollageSize = { 288.0f , 288.0f };
   NSLog(@"[%d] - min section: %d, max section: %d, min row: %d, max row: %d", indexPaths.count, minSection.intValue, maxSection.intValue, minRow.intValue, maxRow.intValue);
 
   return [NSArray arrayWithArray:indexPaths];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (UIColor *)colorForIndexPath:(NSIndexPath *)indexPath
+{
+  NSString *key = [NSString stringWithFormat:@"%d:%d", indexPath.section, indexPath.row];
+  UIColor *color = [_colors objectForKey:key];
+  if (!color)
+  {
+    color = [UIColor colorWithRed:arc4random_uniform(255.0f) / 255.0f
+                            green:arc4random_uniform(255.0f) / 255.0f
+                             blue:arc4random_uniform(255.0f) / 255.0f
+                            alpha:0.5f];
+    [_colors setObject:color forKey:key];
+  }
+  
+  return color;  
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

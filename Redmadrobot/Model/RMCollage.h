@@ -35,8 +35,14 @@ typedef enum {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@interface RMCollageGroup
+@interface RMCollageGroup : NSObject
 
+- (id)initWithSectors:(NSArray *)sectors;
+
+- (void)addSector:(RMCollageSector *)sector;
+- (void)removeSector:(RMCollageSector *)sector;
+
+@property (nonatomic, readonly) RMCollageSector *originSector;
 @property (nonatomic, readonly) NSArray *sectors;
 
 @end
@@ -49,8 +55,9 @@ typedef enum {
 
 @property (nonatomic, readonly) NSNumber *size;
 @property (nonatomic, readonly) NSArray *sectors;
-@property (nonatomic, readonly) NSArray *groups;
+@property (nonatomic, readonly) NSMutableArray *groups;
 
 - (id)initWithSize:(NSNumber *)size;
+- (void)groupSectorsForIndexPaths:(NSArray *)sectorIndexPaths originSectorIndexPath:(NSIndexPath *)originIndexPath;
 
 @end

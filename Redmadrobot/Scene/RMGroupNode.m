@@ -13,6 +13,10 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+@interface RMGroupNode()
+@property (nonatomic, readwrite) RMCollageGroup *group;
+@end
+
 @implementation RMGroupNode
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -20,19 +24,22 @@
 #pragma mark - Init
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithCollageGroup:(RMCollageGroup *)group
++ (RMGroupNode *)nodeWithGroup:(RMCollageGroup *)group
 {
-  CGMutablePathRef groupPath = CGPathCreateMutable();
+  CGRect rect = CGRectZero;
   for (RMCollageSector *sector in group.sectors) {
-    CGPathAddRect(groupPath, NULL, [RMCollageScene rectForIndexPath:sector.indexPath
-                                                    withCollageSize:sector.collage.size.intValue]);
+    NSIndexPath *indexPath = sector.indexPath;
+    CGRect desiredRect = [[RMCollageScene class] rectForIndexPath:indexPath
+                                                  withCollageSize:sector.collage.size.intValue];
+    if (rect.origin.x == 0 && rect.origin.y == 0 && rect.size.width == 0 && rect.size.height == 0)
+      rect = desiredRect;
+    else
+      rect = CGRectUnion(rect, desiredRect);
   }
-  self = [RMGroupNode shapeNodeWithPath:groupPath];
-  if (self)
-  {
-    _group = group;
-  }
-  return self;
+  
+  RMGroupNode *node = [RMGroupNode shapeNodeWithRect:rect];
+  node.group = group;
+  return node;
 }
 
 @end

@@ -15,7 +15,7 @@
 
 @interface RMSectorNode : SKShapeNode
 
-- (id)initWithSector:(RMCollageSector *)sector;
++ (RMSectorNode *)nodeWithSector:(RMCollageSector *)sector;
 
 @property (nonatomic, readonly) RMCollageSector *sector;
 @property (nonatomic) CGRect nodeRect;
