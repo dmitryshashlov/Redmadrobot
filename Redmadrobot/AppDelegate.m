@@ -9,8 +9,7 @@
 #import "AppDelegate.h"
 #import <InstagramKit/InstagramKit.h>
 
-#import "RMSearchViewController.h"
-#import "RMCollageViewController.h"
+#import "RMListViewController.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -26,11 +25,9 @@
   self.window.backgroundColor = [UIColor whiteColor];
   [self.window makeKeyAndVisible];
 
-  // Collage controller
-  RMCollage *collage = [[RMCollage alloc] initWithSize:@3];
-  RMCollageViewController *collageController = [[RMCollageViewController alloc] initWithCollage:collage
-                                                                                 productionStep:RMCollageProductionStepGrid];
-  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:collageController];
+  // List controller
+  RMListViewController *listController = [[RMListViewController alloc] initWithStyle:UITableViewStylePlain];
+  UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:listController];
   self.window.rootViewController = navController;
   
   return YES;

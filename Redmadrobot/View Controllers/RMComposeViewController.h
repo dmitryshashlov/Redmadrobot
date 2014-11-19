@@ -1,5 +1,5 @@
 //
-//  RMCollageViewController.h
+//  RMComposeViewController.h
 //  Redmadrobot
 //
 //  Created by Dmitry Shashlov on 11/19/14.
@@ -7,17 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RMCollageViewModel.h"
+#import "RMCollageViewController.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@class RMCollageViewController;
+@class RMComposeViewController;
 
-@protocol RMCollageViewControllerDelegate <NSObject>
+@protocol RMComposeViewControllerDelegate <NSObject>
 
-- (void)collageControllerDidFinish:(RMCollageViewController *)collageController;
+- (void)composeControllerDidCancel:(RMComposeViewController *)composeController;
+- (void)composeControllerDidFinish:(RMComposeViewController *)composeController;
 
 @end
 
@@ -25,12 +26,13 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@interface RMCollageViewController : UIViewController
+@interface RMComposeViewController : UINavigationController <
+  RMCollageViewControllerDelegate
+>
 
-- (id)initWithCollage:(RMCollage *)collage productionStep:(RMCollageProductionStep)step;
+- (id)initWithCollage:(RMCollage *)collage;
 
-@property (nonatomic, readonly) RMCollageViewModel *collageViewModel;
-@property (nonatomic, readonly) RMCollageProductionStep step;
-@property (nonatomic) id <RMCollageViewControllerDelegate> collageDelegate;
+@property (nonatomic, readonly) RMCollage *collage;
+@property (nonatomic, unsafe_unretained) id<RMComposeViewControllerDelegate> composeDelegate;
 
 @end

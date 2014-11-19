@@ -18,7 +18,6 @@
 @property (nonatomic) SKView *sceneView;
 @property (nonatomic) RMCollageViewModel *collageViewModel;
 @property (nonatomic) NSNumber *gridSize;
-@property (nonatomic, readwrite) BOOL completed;
 @end
 
 @implementation RMCollageViewController
@@ -33,7 +32,7 @@
   self = [super init];
   if (self)
   {
-    _collage = collage;
+    _collageViewModel = [[RMCollageViewModel alloc] initWithCollage:collage];
     _step = step;
     
     // Title
@@ -50,12 +49,12 @@
         self.title = NSLocalizedString(@"Pick", nil);
         break;
     }
-    
+        
     // Next
     UIBarButtonItem *nextItem = [[UIBarButtonItem alloc] initWithTitle:@"Next"
                                                                  style:UIBarButtonItemStyleDone
                                                                 target:self
-                                                                action:@selector(actionNext:)];
+                                                                action:@selector(actionCompleted:)];
     self.navigationItem.rightBarButtonItem = nextItem;
   }
   return self;
@@ -97,7 +96,7 @@
    subscribeNext:^(NSNumber *value) {
      self.gridSize = @(roundf(value.floatValue));
    }];
-  slider.value = _collage.size.floatValue;
+  slider.value = _collageViewModel.collage.size.floatValue;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -147,9 +146,10 @@
 #pragma mark - Actions
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)actionNext:(id)sender
+- (void)actionCompleted:(id)sender
 {
-  self.completed = YES;  
+  if ([_collageDelegate respondsToSelector:@selector(collageControllerDidFinish:)])
+    [_collageDelegate collageControllerDidFinish:self];
 }
 
 @end
