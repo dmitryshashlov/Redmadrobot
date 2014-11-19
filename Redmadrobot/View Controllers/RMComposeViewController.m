@@ -37,7 +37,7 @@
     
     // Cancel
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-                                                                   style:UIBarButtonItemStyleDone
+                                                                   style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(actionCancel:)];
     cancelItem.tintColor = [UIColor redColor];

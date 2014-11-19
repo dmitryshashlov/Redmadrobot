@@ -19,11 +19,12 @@
 #pragma mark - Init
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithMedia:(InstagramMedia *)media indexPath:(NSIndexPath *)indexPath
+- (id)initWithCollage:(RMCollage *)collage media:(InstagramMedia *)media indexPath:(NSIndexPath *)indexPath
 {
   self = [super init];
   if (self)
   {
+    _collage = collage;
     _media = media;
     _indexPath = indexPath;    
   }
@@ -76,8 +77,9 @@
     NSMutableArray *sectorsMutable = [[NSMutableArray alloc] init];
     for (int i = 0; i < size.intValue; i++) {
       for (int n = 0; n < size.intValue; n++) {
-        [sectorsMutable addObject:[[RMCollageSector alloc] initWithMedia:nil
-                                                               indexPath:[NSIndexPath indexPathForRow:n inSection:i]]];
+        [sectorsMutable addObject:[[RMCollageSector alloc] initWithCollage:self
+                                                                     media:nil
+                                                                 indexPath:[NSIndexPath indexPathForRow:n inSection:i]]];
       }
     }
     _sectors = [NSArray arrayWithArray:sectorsMutable];

@@ -36,7 +36,7 @@
     _step = step;
     
     // Title
-    switch (step) {
+    switch (_step) {
       case RMCollageProductionStepGrid:
         self.title = NSLocalizedString(@"Grid size", nil);
         break;
@@ -49,13 +49,30 @@
         self.title = NSLocalizedString(@"Pick", nil);
         break;
     }
+    
+    // Next bar button item
+    switch (_step) {
+      case RMCollageProductionStepGrid:
+      case RMCollageProductionStepWireframe:
+      {
+        UIBarButtonItem *nextItem = [[UIBarButtonItem alloc] initWithTitle:@"Next"
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(actionCompleted:)];
+        self.navigationItem.rightBarButtonItem = nextItem;
+        break;
+      }
         
-    // Next
-    UIBarButtonItem *nextItem = [[UIBarButtonItem alloc] initWithTitle:@"Next"
-                                                                 style:UIBarButtonItemStyleDone
-                                                                target:self
-                                                                action:@selector(actionCompleted:)];
-    self.navigationItem.rightBarButtonItem = nextItem;
+      case RMCollageProductionStepPick:
+      {
+        UIBarButtonItem *mailItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Mail"]
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:self
+                                                                    action:@selector(actionCompleted:)];
+        self.navigationItem.rightBarButtonItem = mailItem;
+        break;
+      }
+    }
   }
   return self;
 }
@@ -68,6 +85,11 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  
+  // Configuration
+  self.view.backgroundColor = [UIColor whiteColor];
+  
+  // Scene view
   _sceneView = [[SKView alloc] initWithFrame:CGRectMake(0.0f,
                                                         self.navigationController.navigationBar.frame.size.height
                                                         + [UIApplication sharedApplication].statusBarFrame.size.height,
@@ -75,28 +97,17 @@
                                                         CGRectGetWidth(self.view.bounds))];
   [self.view addSubview:_sceneView];
   
-  // Slider
-  CGFloat collageOffset = (CGRectGetWidth(self.view.bounds) - kCollageSize.width) / 2;
-  UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(collageOffset,
-                                                                _sceneView.frame.origin.y + CGRectGetWidth(self.view.bounds) + collageOffset,
-                                                                kCollageSize.width,
-                                                                21.0f)];
-  slider.minimumValue = 2;
-  slider.maximumValue = 7;
-  [self.view addSubview:slider];
+  // Configure
+  [self configureViewForStep:_step];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
   
-  // Observe control events
-  [[slider rac_signalForControlEvents:UIControlEventValueChanged]
-   subscribeNext:^(UISlider *slider) {
-     slider.value = roundf(slider.value);
-   }];
-  
-  // Observe value changing
-  [RACObserve(slider, value)
-   subscribeNext:^(NSNumber *value) {
-     self.gridSize = @(roundf(value.floatValue));
-   }];
-  slider.value = _collageViewModel.collage.size.floatValue;
+  // Show toolbar
+  [self.navigationController setToolbarHidden:NO animated:YES];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,6 +123,10 @@
    subscribeNext:^(NSNumber *size) {
      self.collageViewModel = [[RMCollageViewModel alloc] initWithCollage:[[RMCollage alloc] initWithSize:size]];
    }];
+  
+  // Present scene
+  if (!_sceneView.scene)
+    [self presentScene];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,6 +157,67 @@
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)configureViewForStep:(RMCollageProductionStep)step
+{
+  CGFloat collageOffset = (CGRectGetWidth(self.view.bounds) - kCollageSize.width) / 2;
+  
+  switch (step) {
+    case RMCollageProductionStepGrid:
+    {
+      // Slider
+      UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(collageOffset,
+                                                                    _sceneView.frame.origin.y + CGRectGetWidth(self.view.bounds) + collageOffset,
+                                                                    kCollageSize.width,
+                                                                    21.0f)];
+      slider.minimumValue = 2;
+      slider.maximumValue = 7;
+      
+      // Observe control events
+      [[slider rac_signalForControlEvents:UIControlEventValueChanged]
+       subscribeNext:^(UISlider *slider) {
+         slider.value = roundf(slider.value);
+       }];
+      
+      // Observe value changing
+      [RACObserve(slider, value)
+       subscribeNext:^(NSNumber *value) {
+         self.gridSize = @(roundf(value.floatValue));
+       }];
+      slider.value = _collageViewModel.collage.size.floatValue;
+      
+      // Add slider on toolbar
+      UIBarButtonItem *sliderItem = [[UIBarButtonItem alloc] initWithCustomView:slider];
+      [sliderItem setWidth:CGRectGetWidth(slider.bounds)];
+      self.toolbarItems = @[sliderItem];
+
+      break;
+    }
+      
+    case RMCollageProductionStepWireframe:
+    case RMCollageProductionStepPick:
+    {
+      // Reset button
+      UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+      [resetButton setImage:[UIImage imageNamed:@"Reset"] forState:UIControlStateNormal];
+      resetButton.frame = CGRectMake(collageOffset,
+                                     _sceneView.frame.origin.y + CGRectGetWidth(self.view.bounds),
+                                     kCollageSize.width,
+                                     44.0f);
+      [resetButton addTarget:self action:@selector(actionReset:) forControlEvents:UIControlEventTouchUpInside];
+      
+      // Add button on toolbar
+      UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:resetButton];
+      self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                            buttonItem,
+                            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
+      
+      break;
+    }
+      
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Actions
 
@@ -150,6 +226,12 @@
 {
   if ([_collageDelegate respondsToSelector:@selector(collageControllerDidFinish:)])
     [_collageDelegate collageControllerDidFinish:self];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)actionReset:(id)sender
+{
+  // TODO
 }
 
 @end

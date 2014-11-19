@@ -10,6 +10,8 @@
 		4ED1E83652F64CE986D03492 /* libPods-Redmadrobot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1839F66EA114472B15C35F8 /* libPods-Redmadrobot.a */; };
 		B68669FE1A1CA9C100CEDCA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6866A001A1CA9C100CEDCA8 /* Localizable.strings */; };
 		B6866A081A1CCE9A00CEDCA8 /* RMListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6866A071A1CCE9A00CEDCA8 /* RMListViewController.m */; };
+		B6866A0B1A1CEAA700CEDCA8 /* RMSectorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B6866A0A1A1CEAA700CEDCA8 /* RMSectorNode.m */; };
+		B6866A0E1A1CEAB400CEDCA8 /* RMGroupNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B6866A0D1A1CEAB400CEDCA8 /* RMGroupNode.m */; };
 		B692535F1A1B9C7D00502A53 /* InstagramKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = B692535E1A1B9C7D00502A53 /* InstagramKit.plist */; };
 		B69253621A1B9E2900502A53 /* RMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253611A1B9E2900502A53 /* RMSearchViewController.m */; };
 		B69253651A1BA05500502A53 /* RMUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253641A1BA05500502A53 /* RMUserCell.m */; };
@@ -42,6 +44,10 @@
 		B6866A011A1CA9CA00CEDCA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B6866A061A1CCE9A00CEDCA8 /* RMListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMListViewController.h; path = "View Controllers/RMListViewController.h"; sourceTree = "<group>"; };
 		B6866A071A1CCE9A00CEDCA8 /* RMListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMListViewController.m; path = "View Controllers/RMListViewController.m"; sourceTree = "<group>"; };
+		B6866A091A1CEAA700CEDCA8 /* RMSectorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMSectorNode.h; path = Scene/RMSectorNode.h; sourceTree = "<group>"; };
+		B6866A0A1A1CEAA700CEDCA8 /* RMSectorNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMSectorNode.m; path = Scene/RMSectorNode.m; sourceTree = "<group>"; };
+		B6866A0C1A1CEAB400CEDCA8 /* RMGroupNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMGroupNode.h; path = Scene/RMGroupNode.h; sourceTree = "<group>"; };
+		B6866A0D1A1CEAB400CEDCA8 /* RMGroupNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMGroupNode.m; path = Scene/RMGroupNode.m; sourceTree = "<group>"; };
 		B692535E1A1B9C7D00502A53 /* InstagramKit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InstagramKit.plist; sourceTree = "<group>"; };
 		B69253601A1B9E2900502A53 /* RMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMSearchViewController.h; path = "View Controllers/RMSearchViewController.h"; sourceTree = "<group>"; };
 		B69253611A1B9E2900502A53 /* RMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMSearchViewController.m; path = "View Controllers/RMSearchViewController.m"; sourceTree = "<group>"; };
@@ -105,6 +111,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B6866A0F1A1CEB0400CEDCA8 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				B6866A091A1CEAA700CEDCA8 /* RMSectorNode.h */,
+				B6866A0A1A1CEAA700CEDCA8 /* RMSectorNode.m */,
+				B6866A0C1A1CEAB400CEDCA8 /* RMGroupNode.h */,
+				B6866A0D1A1CEAB400CEDCA8 /* RMGroupNode.m */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
 		B692535B1A1B993200502A53 /* View controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +179,7 @@
 		B6CDF77C1A1C99BD0006C6BD /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				B6866A0F1A1CEB0400CEDCA8 /* Nodes */,
 				B6CDF77D1A1C9A360006C6BD /* RMCollageScene.h */,
 				B6CDF77E1A1C9A360006C6BD /* RMCollageScene.m */,
 			);
@@ -371,11 +389,13 @@
 			files = (
 				B69253621A1B9E2900502A53 /* RMSearchViewController.m in Sources */,
 				B6CDF77B1A1C928D0006C6BD /* RMCollageViewModel.m in Sources */,
+				B6866A0E1A1CEAB400CEDCA8 /* RMGroupNode.m in Sources */,
 				B6CDF76F1A1BA7440006C6BD /* RMAutolayoutCell.m in Sources */,
 				B6866A081A1CCE9A00CEDCA8 /* RMListViewController.m in Sources */,
 				B6CDF7781A1C90A00006C6BD /* RMCollage.m in Sources */,
 				B69253651A1BA05500502A53 /* RMUserCell.m in Sources */,
 				B6CDF7821A1C9BA80006C6BD /* RMCollageViewController.m in Sources */,
+				B6866A0B1A1CEAA700CEDCA8 /* RMSectorNode.m in Sources */,
 				B6D9811B1A1B5B0400A7A268 /* AppDelegate.m in Sources */,
 				B6CDF7721A1BAE480006C6BD /* RMAvatarView.m in Sources */,
 				B6CDF77F1A1C9A360006C6BD /* RMCollageScene.m in Sources */,

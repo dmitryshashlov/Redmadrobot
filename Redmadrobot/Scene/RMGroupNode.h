@@ -1,5 +1,5 @@
 //
-//  RMCollageScene.h
+//  RMGroupNode.h
 //  Redmadrobot
 //
 //  Created by Dmitry Shashlov on 11/19/14.
@@ -9,18 +9,14 @@
 #import <SpriteKit/SpriteKit.h>
 #import "RMCollage.h"
 
-extern CGSize kCollageSize;
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@interface RMCollageScene : SKScene
+@interface RMGroupNode : SKShapeNode
 
-- (id)initWithCollage:(RMCollage *)collage productionStep:(RMCollageProductionStep)step size:(CGSize)size;
-+ (CGRect)rectForIndexPath:(NSIndexPath *)indexPath withCollageSize:(NSUInteger)collageSize;
+- (id)initWithCollageGroup:(RMCollageGroup *)group;
 
-@property (nonatomic, readonly) RMCollage *collage;
-@property (nonatomic, readonly) RMCollageProductionStep step;
+@property (nonatomic, readonly) RMCollageGroup *group;
 
 @end

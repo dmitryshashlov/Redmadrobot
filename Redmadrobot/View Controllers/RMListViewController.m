@@ -37,7 +37,7 @@ static NSString * const kUDCollages = @"collages";
     self.title = NSLocalizedString(@"Collages", nil);
     
     // New bar button item
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Plus"]
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithTitle:@"New"
                                                                 style:UIBarButtonItemStylePlain
                                                                target:self
                                                                action:@selector(actionAdd:)];
