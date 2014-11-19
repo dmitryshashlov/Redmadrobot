@@ -1,24 +1,24 @@
 //
-//  RMAvatarView.h
+//  RMCollageViewModel.h
 //  Redmadrobot
 //
-//  Created by Dmitry Shashlov on 11/18/14.
+//  Created by Dmitry Shashlov on 11/19/14.
 //  Copyright (c) 2014 Dmitry Shashlov. All rights reserved.
 //
 
-#import "AMPAvatarView.h"
-
-@class InstagramUser;
+#import <Foundation/Foundation.h>
+#import <SpriteKit/SpriteKit.h>
+#import "RMCollage.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@interface RMAvatarView : AMPAvatarView
+@interface RMCollageViewModel : NSObject
 
-- (void)updateWithUser:(InstagramUser *)user;
-- (void)prepareForReuse;
+- (id)initWithCollage:(RMCollage *)collage;
+- (SKScene *)sceneForProductionStep:(RMCollageProductionStep)step withSize:(CGSize)size;
 
-@property (nonatomic) RACDisposable *imageLoadDisposable;
+@property (nonatomic, readonly) RMCollage *collage;
 
 @end

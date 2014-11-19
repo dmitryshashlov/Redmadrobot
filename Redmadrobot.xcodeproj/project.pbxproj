@@ -8,16 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		4ED1E83652F64CE986D03492 /* libPods-Redmadrobot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1839F66EA114472B15C35F8 /* libPods-Redmadrobot.a */; };
+		B68669FE1A1CA9C100CEDCA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6866A001A1CA9C100CEDCA8 /* Localizable.strings */; };
 		B692535F1A1B9C7D00502A53 /* InstagramKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = B692535E1A1B9C7D00502A53 /* InstagramKit.plist */; };
 		B69253621A1B9E2900502A53 /* RMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253611A1B9E2900502A53 /* RMSearchViewController.m */; };
 		B69253651A1BA05500502A53 /* RMUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253641A1BA05500502A53 /* RMUserCell.m */; };
 		B6CDF76F1A1BA7440006C6BD /* RMAutolayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */; };
 		B6CDF7721A1BAE480006C6BD /* RMAvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7711A1BAE480006C6BD /* RMAvatarView.m */; };
+		B6CDF7781A1C90A00006C6BD /* RMCollage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7771A1C90A00006C6BD /* RMCollage.m */; };
+		B6CDF77B1A1C928D0006C6BD /* RMCollageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF77A1A1C928D0006C6BD /* RMCollageViewModel.m */; };
+		B6CDF77F1A1C9A360006C6BD /* RMCollageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF77E1A1C9A360006C6BD /* RMCollageScene.m */; };
+		B6CDF7821A1C9BA80006C6BD /* RMCollageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7811A1C9BA80006C6BD /* RMCollageViewController.m */; };
+		B6CDF7851A1C9DCC0006C6BD /* RMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7841A1C9DCC0006C6BD /* RMMainViewController.m */; };
+		B6CDF7871A1CA4320006C6BD /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CDF7861A1CA4320006C6BD /* SpriteKit.framework */; };
 		B6D981181A1B5B0400A7A268 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D981171A1B5B0400A7A268 /* main.m */; };
 		B6D9811B1A1B5B0400A7A268 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D9811A1A1B5B0400A7A268 /* AppDelegate.m */; };
-		B6D981211A1B5B0400A7A268 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6D9811F1A1B5B0400A7A268 /* Main.storyboard */; };
 		B6D981231A1B5B0400A7A268 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D981221A1B5B0400A7A268 /* Images.xcassets */; };
-		B6D981261A1B5B0400A7A268 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6D981241A1B5B0400A7A268 /* LaunchScreen.xib */; };
 		B6D981321A1B5B0400A7A268 /* RedmadrobotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D981311A1B5B0400A7A268 /* RedmadrobotTests.m */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B68669FF1A1CA9C100CEDCA8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B6866A011A1CA9CA00CEDCA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B692535E1A1B9C7D00502A53 /* InstagramKit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InstagramKit.plist; sourceTree = "<group>"; };
 		B69253601A1B9E2900502A53 /* RMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMSearchViewController.h; path = "View Controllers/RMSearchViewController.h"; sourceTree = "<group>"; };
 		B69253611A1B9E2900502A53 /* RMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMSearchViewController.m; path = "View Controllers/RMSearchViewController.m"; sourceTree = "<group>"; };
@@ -42,14 +49,23 @@
 		B6CDF7701A1BAE480006C6BD /* RMAvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMAvatarView.h; path = Views/RMAvatarView.h; sourceTree = "<group>"; };
 		B6CDF7711A1BAE480006C6BD /* RMAvatarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMAvatarView.m; path = Views/RMAvatarView.m; sourceTree = "<group>"; };
 		B6CDF7731A1BAF680006C6BD /* Redmadrobot-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Redmadrobot-prefix.pch"; sourceTree = "<group>"; };
+		B6CDF7761A1C90A00006C6BD /* RMCollage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollage.h; path = Model/RMCollage.h; sourceTree = "<group>"; };
+		B6CDF7771A1C90A00006C6BD /* RMCollage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCollage.m; path = Model/RMCollage.m; sourceTree = "<group>"; };
+		B6CDF7791A1C928D0006C6BD /* RMCollageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollageViewModel.h; path = "View Model/RMCollageViewModel.h"; sourceTree = "<group>"; };
+		B6CDF77A1A1C928D0006C6BD /* RMCollageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCollageViewModel.m; path = "View Model/RMCollageViewModel.m"; sourceTree = "<group>"; };
+		B6CDF77D1A1C9A360006C6BD /* RMCollageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollageScene.h; path = Scene/RMCollageScene.h; sourceTree = "<group>"; };
+		B6CDF77E1A1C9A360006C6BD /* RMCollageScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCollageScene.m; path = Scene/RMCollageScene.m; sourceTree = "<group>"; };
+		B6CDF7801A1C9BA80006C6BD /* RMCollageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollageViewController.h; path = "View Controllers/RMCollageViewController.h"; sourceTree = "<group>"; };
+		B6CDF7811A1C9BA80006C6BD /* RMCollageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCollageViewController.m; path = "View Controllers/RMCollageViewController.m"; sourceTree = "<group>"; };
+		B6CDF7831A1C9DCC0006C6BD /* RMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMMainViewController.h; path = "View Controllers/RMMainViewController.h"; sourceTree = "<group>"; };
+		B6CDF7841A1C9DCC0006C6BD /* RMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMMainViewController.m; path = "View Controllers/RMMainViewController.m"; sourceTree = "<group>"; };
+		B6CDF7861A1CA4320006C6BD /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		B6D981121A1B5B0400A7A268 /* Redmadrobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redmadrobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D981161A1B5B0400A7A268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6D981171A1B5B0400A7A268 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B6D981191A1B5B0400A7A268 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B6D9811A1A1B5B0400A7A268 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B6D981201A1B5B0400A7A268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6D981221A1B5B0400A7A268 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B6D981251A1B5B0400A7A268 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B6D9812B1A1B5B0400A7A268 /* RedmadrobotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedmadrobotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D981301A1B5B0400A7A268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6D981311A1B5B0400A7A268 /* RedmadrobotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedmadrobotTests.m; sourceTree = "<group>"; };
@@ -62,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6CDF7871A1CA4320006C6BD /* SpriteKit.framework in Frameworks */,
 				4ED1E83652F64CE986D03492 /* libPods-Redmadrobot.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,6 +96,7 @@
 		03B99BD51EC944C6B3C1DAAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6CDF7861A1CA4320006C6BD /* SpriteKit.framework */,
 				D1839F66EA114472B15C35F8 /* libPods-Redmadrobot.a */,
 			);
 			name = Frameworks;
@@ -89,6 +107,10 @@
 			children = (
 				B69253601A1B9E2900502A53 /* RMSearchViewController.h */,
 				B69253611A1B9E2900502A53 /* RMSearchViewController.m */,
+				B6CDF7801A1C9BA80006C6BD /* RMCollageViewController.h */,
+				B6CDF7811A1C9BA80006C6BD /* RMCollageViewController.m */,
+				B6CDF7831A1C9DCC0006C6BD /* RMMainViewController.h */,
+				B6CDF7841A1C9DCC0006C6BD /* RMMainViewController.m */,
 			);
 			name = "View controllers";
 			sourceTree = "<group>";
@@ -114,6 +136,33 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		B6CDF7741A1C90040006C6BD /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6CDF7791A1C928D0006C6BD /* RMCollageViewModel.h */,
+				B6CDF77A1A1C928D0006C6BD /* RMCollageViewModel.m */,
+			);
+			name = "View Model";
+			sourceTree = "<group>";
+		};
+		B6CDF7751A1C908E0006C6BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6CDF7761A1C90A00006C6BD /* RMCollage.h */,
+				B6CDF7771A1C90A00006C6BD /* RMCollage.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B6CDF77C1A1C99BD0006C6BD /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				B6CDF77D1A1C9A360006C6BD /* RMCollageScene.h */,
+				B6CDF77E1A1C9A360006C6BD /* RMCollageScene.m */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
 		B6D981091A1B5B0300A7A268 = {
 			isa = PBXGroup;
 			children = (
@@ -137,13 +186,14 @@
 		B6D981141A1B5B0400A7A268 /* Redmadrobot */ = {
 			isa = PBXGroup;
 			children = (
+				B6CDF77C1A1C99BD0006C6BD /* Scene */,
+				B6CDF7751A1C908E0006C6BD /* Model */,
+				B6CDF7741A1C90040006C6BD /* View Model */,
 				B692535C1A1B993800502A53 /* Views */,
 				B692535B1A1B993200502A53 /* View controllers */,
 				B6D981191A1B5B0400A7A268 /* AppDelegate.h */,
 				B6D9811A1A1B5B0400A7A268 /* AppDelegate.m */,
-				B6D9811F1A1B5B0400A7A268 /* Main.storyboard */,
 				B6D981221A1B5B0400A7A268 /* Images.xcassets */,
-				B6D981241A1B5B0400A7A268 /* LaunchScreen.xib */,
 				B6D981151A1B5B0400A7A268 /* Supporting Files */,
 			);
 			path = Redmadrobot;
@@ -156,6 +206,7 @@
 				B6D981171A1B5B0400A7A268 /* main.m */,
 				B692535E1A1B9C7D00502A53 /* InstagramKit.plist */,
 				B6CDF7731A1BAF680006C6BD /* Redmadrobot-prefix.pch */,
+				B6866A001A1CA9C100CEDCA8 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -242,6 +293,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = B6D981091A1B5B0300A7A268;
 			productRefGroup = B6D981131A1B5B0400A7A268 /* Products */;
@@ -259,9 +311,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6D981211A1B5B0400A7A268 /* Main.storyboard in Resources */,
-				B6D981261A1B5B0400A7A268 /* LaunchScreen.xib in Resources */,
 				B692535F1A1B9C7D00502A53 /* InstagramKit.plist in Resources */,
+				B68669FE1A1CA9C100CEDCA8 /* Localizable.strings in Resources */,
 				B6D981231A1B5B0400A7A268 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,11 +365,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B69253621A1B9E2900502A53 /* RMSearchViewController.m in Sources */,
+				B6CDF77B1A1C928D0006C6BD /* RMCollageViewModel.m in Sources */,
 				B6CDF76F1A1BA7440006C6BD /* RMAutolayoutCell.m in Sources */,
+				B6CDF7781A1C90A00006C6BD /* RMCollage.m in Sources */,
 				B69253651A1BA05500502A53 /* RMUserCell.m in Sources */,
+				B6CDF7821A1C9BA80006C6BD /* RMCollageViewController.m in Sources */,
 				B6D9811B1A1B5B0400A7A268 /* AppDelegate.m in Sources */,
 				B6CDF7721A1BAE480006C6BD /* RMAvatarView.m in Sources */,
+				B6CDF77F1A1C9A360006C6BD /* RMCollageScene.m in Sources */,
 				B6D981181A1B5B0400A7A268 /* main.m in Sources */,
+				B6CDF7851A1C9DCC0006C6BD /* RMMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,20 +397,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B6D9811F1A1B5B0400A7A268 /* Main.storyboard */ = {
+		B6866A001A1CA9C100CEDCA8 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B6D981201A1B5B0400A7A268 /* Base */,
+				B68669FF1A1CA9C100CEDCA8 /* ru */,
+				B6866A011A1CA9CA00CEDCA8 /* en */,
 			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B6D981241A1B5B0400A7A268 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B6D981251A1B5B0400A7A268 /* Base */,
-			);
-			name = LaunchScreen.xib;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -443,11 +492,14 @@
 			baseConfigurationReference = C08F3ED861744545A66EB578 /* Pods-Redmadrobot.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PREFIX_HEADER = "Redmadrobot/Redmadrobot-prefix.pch";
 				INFOPLIST_FILE = Redmadrobot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos8.1;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -456,11 +508,14 @@
 			baseConfigurationReference = C08F3ED861744545A66EB578 /* Pods-Redmadrobot.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PREFIX_HEADER = "Redmadrobot/Redmadrobot-prefix.pch";
 				INFOPLIST_FILE = Redmadrobot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos8.1;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
