@@ -418,8 +418,6 @@ CGSize kCollageSize = { 288.0f , 288.0f };
     }
   }
   
-  NSLog(@"[%d] - min section: %d, max section: %d, min row: %d, max row: %d", indexPaths.count, minSection.intValue, maxSection.intValue, minRow.intValue, maxRow.intValue);
-
   return [NSArray arrayWithArray:indexPaths];
 }
 
