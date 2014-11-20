@@ -19,6 +19,7 @@ extern CGSize kCollageSize;
 
 - (id)initWithCollage:(RMCollage *)collage productionStep:(RMCollageProductionStep)step size:(CGSize)size;
 + (CGRect)rectForIndexPath:(NSIndexPath *)indexPath withCollageSize:(NSUInteger)collageSize;
+- (void)update;
 
 @property (nonatomic, readonly) RMCollage *collage;
 @property (nonatomic, readonly) RMCollageProductionStep step;

@@ -365,6 +365,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
       
     case RMCollageProductionStepPick:
       [_collageViewModel.collage clearGroupsMedia];
+      [_collageScene update];
       break;
       
     case RMCollageProductionStepGrid:
