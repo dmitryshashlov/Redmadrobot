@@ -263,24 +263,28 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)configureButtons
 {
-  CGFloat collageOffset = (CGRectGetWidth(self.view.bounds) - kCollageSize.width) / 2;
-  
   // Reset button
   UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  resetButton.frame = CGRectMake(0.0f, 0.0f, 44.0f, 44.0f);
   [resetButton setImage:[UIImage imageNamed:@"Reset"] forState:UIControlStateNormal];
-  resetButton.frame = CGRectMake(collageOffset,
-                                 _sceneView.frame.origin.y + CGRectGetWidth(self.view.bounds),
-                                 kCollageSize.width,
-                                 44.0f);
   [resetButton addTarget:self action:@selector(actionReset:) forControlEvents:UIControlEventTouchUpInside];
-  UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:resetButton];
+  UIBarButtonItem *resetItem = [[UIBarButtonItem alloc] initWithCustomView:resetButton];
+  resetItem.width = 44.0f;
+  
+  // Shuffle button
+  UIButton *shufleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  shufleButton.frame = CGRectMake(0.0f, 0.0f, 44.0f, 44.0f);
+  [shufleButton setImage:[UIImage imageNamed:@"Shufle"] forState:UIControlStateNormal];
+  [shufleButton addTarget:self action:@selector(actionShufle:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *shufleItem = [[UIBarButtonItem alloc] initWithCustomView:shufleButton];
+  shufleItem.width = 44.0f;
   
   switch (_step) {
     case RMCollageProductionStepGrid:
     case RMCollageProductionStepWireframe:
     {
       // Add button on toolbar
-      self.toolbarItems = @[buttonItem,
+      self.toolbarItems = @[resetItem,
                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
       break;
     }
@@ -317,7 +321,8 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
          }
        }];
       
-      self.toolbarItems = @[buttonItem,
+      self.toolbarItems = @[resetItem,
+                            shufleItem,
                             [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
                             loadMoreItem];
       
@@ -392,6 +397,15 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 - (void)actionLoadMore:(id)sender
 {
   [self loadNextPage];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)actionShufle:(id)sender
+{
+  for (RMCollageGroup *group in _collageViewModel.collage.groups) {
+    int randomIndex = arc4random_uniform(_media.count);
+    group.media = [_media objectAtIndex:randomIndex];
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
