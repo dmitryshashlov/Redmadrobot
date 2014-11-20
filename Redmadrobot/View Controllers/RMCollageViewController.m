@@ -352,25 +352,22 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)actionCompleted:(id)sender
 {
+  void (^completionBlock)(void) = ^{
+    if ([_collageDelegate respondsToSelector:@selector(collageControllerDidFinish:)])
+      [_collageDelegate collageControllerDidFinish:self];
+  };
+  
   if (_step == RMCollageProductionStepPick)
   {
-    // Pre-render with real images
-    [_collageScene updateWithFullImagesWithCompletionBlock:^{
-      [[[RACSignal interval:1
-                onScheduler:[RACScheduler mainThreadScheduler]] take:1]
-       subscribeNext:^(id x) {
-         UIGraphicsBeginImageContextWithOptions(_sceneView.bounds.size, NO, 2.0f);
-         [_sceneView drawViewHierarchyInRect:_sceneView.bounds afterScreenUpdates:YES];
-         UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-         UIGraphicsEndImageContext();
-         
-         self.collageImage = viewImage;
-       }];
-    }];
+    // Build image
+    [_collageViewModel buildCollageImageWithSize:CGSizeMake(612.0f, 612.0f)
+                                 completionBlock:^(UIImage *collageImage) {
+                                   completionBlock();
+                                   self.collageImage = collageImage;
+                                 }];
   }
-  
-  if ([_collageDelegate respondsToSelector:@selector(collageControllerDidFinish:)])
-    [_collageDelegate collageControllerDidFinish:self];
+  else
+    completionBlock();
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -459,10 +459,4 @@ CGSize kCollageSize = { 288.0f , 288.0f };
   [self configureSceneForStep:_step imageKeypath:kImageKeypathLowRes completionBlock:nil];
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)updateWithFullImagesWithCompletionBlock:(void (^)(void))comletionBlock
-{
-  [self configureSceneForStep:_step imageKeypath:kImageKeypathHiRes completionBlock:comletionBlock];
-}
-
 @end

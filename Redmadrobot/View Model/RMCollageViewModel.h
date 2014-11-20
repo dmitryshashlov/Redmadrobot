@@ -19,6 +19,7 @@
 
 - (id)initWithCollage:(RMCollage *)collage;
 - (RMCollageScene *)sceneForProductionStep:(RMCollageProductionStep)step withSize:(CGSize)size;
+- (void)buildCollageImageWithSize:(CGSize)size completionBlock:(void(^)(UIImage *))completionBlock;
 
 @property (nonatomic, readonly) RMCollage *collage;
 
