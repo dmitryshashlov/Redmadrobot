@@ -24,6 +24,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 @property (nonatomic) NSNumber *gridSize;
 @property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic) NSMutableArray *media;
+@property (nonatomic) InstagramPaginationInfo *paginationInfo;
 @end
 
 @implementation RMCollageViewController
@@ -118,14 +119,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
   // Load media
   if (_step == RMCollageProductionStepPick)
   {
-    [[InstagramEngine sharedEngine] getMediaForUser:_user.Id
-                                        withSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
-                                          NSMutableArray *mediaMutable = [self mutableArrayValueForKeyPath:@"media"];
-                                          [mediaMutable addObjectsFromArray:media];
-                                          [_collectionView reloadData];
-                                        } failure:^(NSError *error) {
-                                          NSLog(@"%@", error.localizedDescription);
-                                        }];
+    [self loadNextPage];
   }
 }
 
@@ -276,12 +270,57 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
                                  kCollageSize.width,
                                  44.0f);
   [resetButton addTarget:self action:@selector(actionReset:) forControlEvents:UIControlEventTouchUpInside];
-  
-  // Add button on toolbar
   UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:resetButton];
-  self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                        buttonItem,
-                        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
+  
+  switch (_step) {
+    case RMCollageProductionStepGrid:
+    case RMCollageProductionStepWireframe:
+    {
+      // Add button on toolbar
+      self.toolbarItems = @[buttonItem,
+                            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
+      break;
+    }
+      
+    case RMCollageProductionStepPick:
+    {
+      
+      // Load more item
+      UIBarButtonItem *loadMoreItem = [[UIBarButtonItem alloc] initWithTitle:@"Load more"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:self
+                                                                      action:@selector(actionLoadMore:)];
+      loadMoreItem.width = 80.0f;
+      
+      // Change item state
+      [RACObserve(self, paginationInfo)
+       subscribeNext:^(InstagramPaginationInfo *paginationInfo) {
+         loadMoreItem.enabled = (paginationInfo != nil);
+       }];
+      
+      self.toolbarItems = @[buttonItem,
+                            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                            loadMoreItem];
+      
+      break;
+    }
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)loadNextPage
+{
+  [[InstagramEngine sharedEngine] getMediaForUser:_user.Id
+                                            count:20
+                                            maxId:self.paginationInfo.nextMaxId
+                                      withSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
+                                        self.paginationInfo = paginationInfo;
+                                        NSMutableArray *mediaMutable = [self mutableArrayValueForKeyPath:@"media"];
+                                        [mediaMutable addObjectsFromArray:media];
+                                        [_collectionView reloadData];
+                                      } failure:^(NSError *error) {
+                                        NSLog(@"%@", error.localizedDescription);
+                                      }];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -310,6 +349,12 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
     case RMCollageProductionStepGrid:
       break;
   }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)actionLoadMore:(id)sender
+{
+  [self loadNextPage];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
