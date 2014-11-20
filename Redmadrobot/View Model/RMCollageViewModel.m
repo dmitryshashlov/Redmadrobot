@@ -35,7 +35,7 @@
 #pragma mark - Public
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (SKScene *)sceneForProductionStep:(RMCollageProductionStep)step withSize:(CGSize)size
+- (RMCollageScene *)sceneForProductionStep:(RMCollageProductionStep)step withSize:(CGSize)size
 {
   RMCollageScene *scene = [[RMCollageScene alloc] initWithCollage:_collage productionStep:step size:size];
   return scene;

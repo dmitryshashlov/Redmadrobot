@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
 #import "RMCollage.h"
+#import "RMCollageScene.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -17,7 +18,7 @@
 @interface RMCollageViewModel : NSObject
 
 - (id)initWithCollage:(RMCollage *)collage;
-- (SKScene *)sceneForProductionStep:(RMCollageProductionStep)step withSize:(CGSize)size;
+- (RMCollageScene *)sceneForProductionStep:(RMCollageProductionStep)step withSize:(CGSize)size;
 
 @property (nonatomic, readonly) RMCollage *collage;
 

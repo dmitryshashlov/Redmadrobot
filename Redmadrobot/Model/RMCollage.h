@@ -44,6 +44,7 @@ typedef enum {
 
 @property (nonatomic, readonly) RMCollageSector *originSector;
 @property (nonatomic, readonly) NSArray *sectors;
+@property (nonatomic) InstagramMedia *media;
 
 @end
 
@@ -59,6 +60,7 @@ typedef enum {
 
 - (id)initWithSize:(NSNumber *)size;
 - (void)groupSectorsForIndexPaths:(NSArray *)sectorIndexPaths originSectorIndexPath:(NSIndexPath *)originIndexPath;
+- (RMCollageGroup *)groupContainingSector:(RMCollageSector *)sector;
 
 - (void)clearGroups;
 - (void)clearGroupsMedia;

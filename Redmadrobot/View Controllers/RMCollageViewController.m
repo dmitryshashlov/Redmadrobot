@@ -20,6 +20,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 
 @interface RMCollageViewController()
 @property (nonatomic) SKView *sceneView;
+@property (nonatomic) RMCollageScene *collageScene;
 @property (nonatomic) RMCollageViewModel *collageViewModel;
 @property (nonatomic) NSNumber *gridSize;
 @property (nonatomic) UICollectionView *collectionView;
@@ -173,9 +174,9 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)presentScene
 {
-  SKScene *scene = [_collageViewModel sceneForProductionStep:_step withSize:_sceneView.bounds.size];
-  scene.scaleMode = SKSceneScaleModeAspectFill;
-  [_sceneView presentScene:scene];
+  _collageScene = [_collageViewModel sceneForProductionStep:_step withSize:_sceneView.bounds.size];
+  _collageScene.scaleMode = SKSceneScaleModeAspectFill;
+  [_sceneView presentScene:_collageScene];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -383,6 +384,13 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
   cell.media = media;
   
   return cell;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+  InstagramMedia *media = [_media objectAtIndex:indexPath.row];
+  _collageScene.selectedGroup.media = media;
 }
 
 @end

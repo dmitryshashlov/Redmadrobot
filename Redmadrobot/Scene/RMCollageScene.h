@@ -22,5 +22,6 @@ extern CGSize kCollageSize;
 
 @property (nonatomic, readonly) RMCollage *collage;
 @property (nonatomic, readonly) RMCollageProductionStep step;
+@property (nonatomic, readonly) RMCollageGroup *selectedGroup;
 
 @end
