@@ -27,6 +27,7 @@ CGSize kCollageSize = { 288.0f , 288.0f };
 @property (nonatomic) NSIndexPath *originIndexPath;
 @property (nonatomic, readwrite) RMCollageGroup *selectedGroup;
 @property (nonatomic) NSMutableArray *groupDisposables;
+@property (nonatomic) NSArray *groupNodes;
 @end
 
 @implementation RMCollageScene
@@ -89,7 +90,13 @@ CGSize kCollageSize = { 288.0f , 288.0f };
     // Observe group selecting
     [[RACObserve(self, selectedGroup) distinctUntilChanged]
      subscribeNext:^(RMCollageGroup *group) {
-       [self configureSceneForStep:_step];
+       for (RMGroupNode *groupNode in _groupNodes)
+       {
+         if (groupNode.group == group)
+           groupNode.fillColor = [UIColor redColor];
+         else
+           groupNode.fillColor = [self colorForIndexPath:group.originSector.indexPath];
+       }
      }];
   }
   return self;
@@ -117,20 +124,20 @@ CGSize kCollageSize = { 288.0f , 288.0f };
   };
   
   void (^bootstrapGroupsBlock)(void(^)(RMCollageGroup *group, SKShapeNode *groupNode)) = ^(void(^groupNodeBlock)(RMCollageGroup *, SKShapeNode *)){
+    NSMutableArray *groupNodesMutable = [[NSMutableArray alloc] init];
     for (RMCollageGroup *group in _collage.groups) {
       SKShapeNode *groupNode = [RMGroupNode nodeWithGroup:group];
       groupNode.strokeColor = [UIColor blackColor];
       groupNode.lineWidth = 1.0f;
-      if (group == _selectedGroup)
-        groupNode.fillColor = [UIColor redColor];
-      else
-        groupNode.fillColor = [self colorForIndexPath:group.originSector.indexPath];
+      groupNode.fillColor = [self colorForIndexPath:group.originSector.indexPath];
       
       if (groupNodeBlock)
         groupNodeBlock(group, groupNode);
       
       [_perimeterNode addChild:groupNode];
+      [groupNodesMutable addObject:groupNode];
     }
+    _groupNodes = [NSArray arrayWithArray:groupNodesMutable];
   };
   
   // Configure nodes
