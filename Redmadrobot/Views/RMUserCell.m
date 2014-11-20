@@ -10,10 +10,13 @@
 #import "RMAvatarView.h"
 #import <InstagramKit/InstagramUser.h>
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-variable"
 static CGFloat kVerticalOffset = kGridSize * 2;
 static CGFloat kVerticalPadding = kGridSize;
 static CGFloat kHorizontalOffset = kGridSize * 2;
 static CGFloat kHorizontalPadding = kGridSize;
+#pragma clang diagnostic pop
 
 @interface RMUserCell()
 @property (nonatomic) RMAvatarView *avatarView;
