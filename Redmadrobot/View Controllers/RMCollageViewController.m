@@ -404,7 +404,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 - (void)actionShufle:(id)sender
 {
   for (RMCollageGroup *group in _collageViewModel.collage.groups) {
-    int randomIndex = arc4random_uniform(_media.count);
+    int randomIndex = arc4random_uniform((int)_media.count);
     group.media = [_media objectAtIndex:randomIndex];
   }
 }

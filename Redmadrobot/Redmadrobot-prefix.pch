@@ -10,5 +10,6 @@
 
   #define kGridSize 8.0f
   #import <ReactiveCocoa/ReactiveCocoa.h>
+  #import <libextobjc/EXTScope.h>
 
 #endif
