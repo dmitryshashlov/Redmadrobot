@@ -46,8 +46,10 @@ static NSString * const kUDCollages = @"collages";
     self.navigationItem.rightBarButtonItem = addItem;
     
     // Observe collages
+    @weakify(self);
     [RACObserve(self, collages)
      subscribeNext:^(id x) {
+       @strongify(self);
        [self.tableView reloadData];
      }];
   }
@@ -125,25 +127,25 @@ static NSString * const kUDCollages = @"collages";
   [self dismissViewControllerAnimated:YES completion:nil];
   
   // Send image
-  [[RACObserve(composeController, collageImage)
-    filter:^BOOL(UIImage *collageImage) {
-      return collageImage != nil;
-    }]
+  @weakify(self);
+  [[[RACObserve(composeController, collageImage)
+     filter:^BOOL(UIImage *collageImage) {
+       return collageImage != nil;
+     }] deliverOn:[RACScheduler mainThreadScheduler]]
    subscribeNext:^(UIImage *collageImage) {
-     dispatch_async(dispatch_get_main_queue(), ^{
-  
-       // Save colage
-       RMCollage *collage = composeController.collage;
-       collage.previewImage = collageImage;
-       [collage save];
-       
-       // Add to collages
-       NSMutableArray *collagesMutable = [self mutableArrayValueForKeyPath:@"collages"];
-       [collagesMutable addObject:collage];
-       
-       // Share
-       [self shareImage:collageImage withType:composeController.shareType];
-     });
+     @strongify(self);
+     
+     // Save colage
+     RMCollage *collage = composeController.collage;
+     collage.previewImage = collageImage;
+     [collage save];
+     
+     // Add to collages
+     NSMutableArray *collagesMutable = [self mutableArrayValueForKeyPath:@"collages"];
+     [collagesMutable addObject:collage];
+     
+     // Share
+     [self shareImage:collageImage withType:composeController.shareType];
    }];
 }
 

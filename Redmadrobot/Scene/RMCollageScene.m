@@ -60,8 +60,10 @@ CGSize kCollageSize = { 288.0f , 288.0f };
     [self addChild:_perimeterNode];
         
     // Observe selected index paths
+    @weakify(self);
     [[RACObserve(self, selectedIndexPaths) distinctUntilChanged]
      subscribeNext:^(NSArray *selectedIndexPaths) {
+       @strongify(self);
        [_selectionNode removeFromParent];
        if (selectedIndexPaths.count)
        {
@@ -86,12 +88,14 @@ CGSize kCollageSize = { 288.0f , 288.0f };
     // Observe group changing
     [RACObserve(self.collage, groups)
      subscribeNext:^(id x) {
+       @strongify(self);
        [self configureSceneForStep:_step imageKeypath:kImageKeypathLowRes completionBlock:nil];
      }];
     
     // Observe group selecting
     [[RACObserve(self, selectedGroup) distinctUntilChanged]
      subscribeNext:^(RMCollageGroup *group) {
+       @strongify(self);
        for (RMGroupNode *groupNode in _groupNodes)
        {
          if (groupNode.group == group)
@@ -106,14 +110,28 @@ CGSize kCollageSize = { 288.0f , 288.0f };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Memory
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)dealloc
+{
+  for (RACDisposable *groupDisposable in _groupDisposables) {
+    [groupDisposable dispose];
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Configure
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)configureSceneForStep:(RMCollageProductionStep)step imageKeypath:(NSString *)imageKeypath completionBlock:(void(^)(void))completionBlock
 {
+  @weakify(self);
   [_perimeterNode removeAllChildren];
   
   void (^bootstrapSectorsBlock)(void) = ^{
+    @strongify(self);
     for (RMCollageSector *sector in _collage.sectors) {
       RMSectorNode *sectorNode = [RMSectorNode nodeWithSector:sector];
       sectorNode.strokeColor = [UIColor blackColor];
@@ -126,6 +144,7 @@ CGSize kCollageSize = { 288.0f , 288.0f };
   };
   
   void (^bootstrapGroupsBlock)(void(^)(RMCollageGroup *group, SKShapeNode *groupNode)) = ^(void(^groupNodeBlock)(RMCollageGroup *, SKShapeNode *)){
+    @strongify(self);
     NSMutableArray *groupNodesMutable = [[NSMutableArray alloc] init];
     for (RMCollageGroup *group in _collage.groups) {
       SKShapeNode *groupNode = [RMGroupNode nodeWithGroup:group];
@@ -186,7 +205,6 @@ CGSize kCollageSize = { 288.0f , 288.0f };
       
     case RMCollageProductionStepWireframe:
     {
-      
       // Group nodes
       bootstrapGroupsBlock(nil);
       
@@ -198,6 +216,8 @@ CGSize kCollageSize = { 288.0f , 288.0f };
       
     case RMCollageProductionStepPick:
     {
+      @weakify(self);
+      
       // Clear group disposables
       for (RACDisposable *disposable in [NSArray arrayWithArray:_groupDisposables]) {
         [disposable dispose];
@@ -207,44 +227,46 @@ CGSize kCollageSize = { 288.0f , 288.0f };
       // Group nodes
       NSMutableArray *imageLoadSignals = [[NSMutableArray alloc] init];
       void (^reactiveBlock)(RMCollageGroup *, SKShapeNode *) = ^(RMCollageGroup *group, SKShapeNode *groupNode){
-          RACDisposable *groupDisposable = [[[RACObserve(group, media) distinctUntilChanged]
-                                             filter:^BOOL(InstagramMedia *media) {
-                                               return media != nil;
-                                             }]
-                                            subscribeNext:^(InstagramMedia *media) {
-                                              RACSignal *imageLoadSignal = [NSData rac_readContentsOfURL:[group.media valueForKeyPath:imageKeypath]
-                                                                                                 options:0
-                                                                                               scheduler:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]];
-                                              [imageLoadSignals addObject:imageLoadSignal];
-                                              [imageLoadSignal
-                                               subscribeNext:^(NSData *data) {
-                                                 SKTexture *texture = [SKTexture textureWithImage:[UIImage imageWithData:data]];
-                                                 dispatch_async(dispatch_get_main_queue(), ^{
-                                                   CGRect groupRect = [self rectForGroup:group];
-                                                   CGSize imageNodeSize = CGSizeMake(MAX(groupRect.size.width, groupRect.size.height),
-                                                                                     MAX(groupRect.size.width, groupRect.size.height));
-                                                   
-                                                   // Image node
-                                                   SKSpriteNode *imageNode = [SKSpriteNode spriteNodeWithTexture:texture
-                                                                                                            size:imageNodeSize];
-                                                   imageNode.position = CGPointMake(groupRect.origin.x + groupRect.size.width / 2,
-                                                                                    groupRect.origin.y + groupRect.size.height / 2);
-                                                   
-                                                   // Mask node
-                                                   SKSpriteNode *maskNode = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:groupRect.size];
-                                                   maskNode.position = imageNode.position;
-                                                   
-                                                   // Crop node
-                                                   SKCropNode *cropNode = [SKCropNode node];
-                                                   [cropNode addChild:imageNode];
-                                                   [cropNode setMaskNode:maskNode];
-                                                   [groupNode addChild:cropNode];
-                                                 });
-                                               }
-                                               error:^(NSError *error) {
-                                                 NSLog(@"%@", error.localizedDescription);
-                                               }];
-                                            }];
+        @strongify(self);
+        RACDisposable *groupDisposable = [[[RACObserve(group, media) distinctUntilChanged]
+                                           filter:^BOOL(InstagramMedia *media) {
+                                             return media != nil;
+                                           }]
+                                          subscribeNext:^(InstagramMedia *media) {
+                                            @weakify(self);
+                                            RACSignal *imageLoadSignal = [[NSData rac_readContentsOfURL:[group.media valueForKeyPath:imageKeypath]
+                                                                                                options:0
+                                                                                              scheduler:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]]
+                                                                          deliverOn:[RACScheduler mainThreadScheduler]];
+                                            [imageLoadSignals addObject:imageLoadSignal];
+                                            [imageLoadSignal
+                                             subscribeNext:^(NSData *data) {
+                                               @strongify(self);
+                                               SKTexture *texture = [SKTexture textureWithImage:[UIImage imageWithData:data]];
+                                               CGRect groupRect = [self rectForGroup:group];
+                                               CGSize imageNodeSize = CGSizeMake(MAX(groupRect.size.width, groupRect.size.height),
+                                                                                 MAX(groupRect.size.width, groupRect.size.height));
+                                               
+                                               // Image node
+                                               SKSpriteNode *imageNode = [SKSpriteNode spriteNodeWithTexture:texture
+                                                                                                        size:imageNodeSize];
+                                               imageNode.position = CGPointMake(groupRect.origin.x + groupRect.size.width / 2,
+                                                                                groupRect.origin.y + groupRect.size.height / 2);
+                                               
+                                               // Mask node
+                                               SKSpriteNode *maskNode = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:groupRect.size];
+                                               maskNode.position = imageNode.position;
+                                               
+                                               // Crop node
+                                               SKCropNode *cropNode = [SKCropNode node];
+                                               [cropNode addChild:imageNode];
+                                               [cropNode setMaskNode:maskNode];
+                                               [groupNode addChild:cropNode];
+                                             }
+                                             error:^(NSError *error) {
+                                               NSLog(@"%@", error.localizedDescription);
+                                             }];
+                                          }];
           [_groupDisposables addObject:groupDisposable];
       };
       bootstrapGroupsBlock(reactiveBlock);

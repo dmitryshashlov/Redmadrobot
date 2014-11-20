@@ -197,7 +197,9 @@ static NSString * const kUDKeyCollages = @"collages";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)groupSectorsForIndexPaths:(NSArray *)sectorIndexPaths originSectorIndexPath:(NSIndexPath *)originIndexPath
 {
+  @weakify(self);
   NSArray *sectors = [sectorIndexPaths.rac_sequence map:^id(NSIndexPath *indexPath) {
+    @strongify(self);
     return [self sectorForIndexPath:indexPath];
   }].array;
   

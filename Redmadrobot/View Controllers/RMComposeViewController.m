@@ -105,12 +105,15 @@
       RMSearchViewController *searchController = [[RMSearchViewController alloc] initWithStyle:UITableViewStylePlain];
       [self pushViewController:searchController animated:YES];
       
+      @weakify(self);
+      
       // Observe user picking
       [[RACObserve(searchController, selectedUser)
         filter:^BOOL(InstagramUser *user) {
           return user != nil;
         }]
        subscribeNext:^(InstagramUser *user) {
+         @strongify(self);
          RMCollageViewController *nextStepController = [[RMCollageViewController alloc] initWithCollage:collageController.collageViewModel.collage
                                                                                          productionStep:RMCollageProductionStepPick];
          nextStepController.collageDelegate = self;
@@ -125,18 +128,22 @@
       if ([_composeDelegate respondsToSelector:@selector(composeControllerDidFinish:)])
         [_composeDelegate composeControllerDidFinish:self];
       
+      @weakify(self);
+      
       // Collage image
       [[RACObserve(collageController, collageImage)
        filter:^BOOL(UIImage *collageImage) {
          return collageImage != nil;
        }]
        subscribeNext:^(UIImage *collageImage) {
+         @strongify(self);
          self.collageImage = collageImage;
        }];
       
       // Share type
       [RACObserve(collageController, shareType)
        subscribeNext:^(NSNumber *shareType) {
+         @strongify(self);
          self.shareType = shareType.intValue;
        }];
       

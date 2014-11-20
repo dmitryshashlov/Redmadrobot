@@ -75,11 +75,12 @@ static UIImage * __kDefaultAvatarImage;
     return nil;
   }];
   
-  _imageLoadDisposable = [imageLoadSignal subscribeNext:^(UIImage *image) {
-    dispatch_async(dispatch_get_main_queue(), ^{
-      self.image = image;
-    });
-  }];
+  @weakify(self);
+  _imageLoadDisposable = [[imageLoadSignal deliverOn:[RACScheduler mainThreadScheduler]]
+                          subscribeNext:^(UIImage *image) {
+                            @strongify(self);
+                            self.image = image;
+                          }];
 }
 
 @end

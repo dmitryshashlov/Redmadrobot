@@ -142,11 +142,13 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
   [super viewWillLayoutSubviews];
   
   // Observe grid size changing
+  @weakify(self);
   [[[RACObserve(self, gridSize) distinctUntilChanged]
     filter:^BOOL(NSNumber *size) {
       return size != nil;
     }]
    subscribeNext:^(NSNumber *size) {
+     @strongify(self);
      self.collageViewModel = [[RMCollageViewModel alloc] initWithCollage:[[RMCollage alloc] initWithSize:size]];
    }];
   
@@ -205,8 +207,10 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
        }];
       
       // Observe value changing
+      @weakify(self);
       [RACObserve(slider, value)
        subscribeNext:^(NSNumber *value) {
+         @strongify(self);
          self.gridSize = @(roundf(value.floatValue));
        }];
       slider.value = _collageViewModel.collage.size.floatValue;
