@@ -69,7 +69,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
       case RMCollageProductionStepGrid:
       case RMCollageProductionStepWireframe:
       {
-        UIBarButtonItem *nextItem = [[UIBarButtonItem alloc] initWithTitle:@"Next"
+        UIBarButtonItem *nextItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", nil)
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(actionCompleted:)];
@@ -79,7 +79,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
         
       case RMCollageProductionStepPick:
       {
-        UIBarButtonItem *mailItem = [[UIBarButtonItem alloc] initWithTitle:@"Share"
+        UIBarButtonItem *mailItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Share", nil)
                                                                      style:UIBarButtonItemStyleDone
                                                                     target:self
                                                                     action:@selector(actionShare:)];
@@ -89,7 +89,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
     }
     
     // Back item
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:nil
                                                                             action:nil];

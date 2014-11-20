@@ -39,7 +39,7 @@ static NSString * const kUDCollages = @"collages";
     self.title = NSLocalizedString(@"Collages", nil);
     
     // New bar button item
-    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithTitle:@"New"
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"New", nil)
                                                                 style:UIBarButtonItemStylePlain
                                                                target:self
                                                                action:@selector(actionAdd:)];
@@ -178,7 +178,7 @@ static NSString * const kUDCollages = @"collages";
       else
       {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Mail account"
-                                                            message:@"Please configure Mail account to be able to send emails.\n\nWould you like to save collage to Camera Roll?"
+                                                            message:@"Please configure Mail account to be able to send emails\n\nWould you like to save collage to Camera Roll?"
                                                            delegate:nil
                                                   cancelButtonTitle:@"No"
                                                   otherButtonTitles:@"Yes", nil];
