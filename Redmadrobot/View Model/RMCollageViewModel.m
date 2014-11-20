@@ -115,7 +115,7 @@
 {
   CGFloat gridStep = size.width / _collage.size.intValue;
   return CGRectMake(indexPath.row * gridStep,
-                    indexPath.section * gridStep,
+                    size.height - gridStep - indexPath.section * gridStep,
                     gridStep,
                     gridStep);
 }
