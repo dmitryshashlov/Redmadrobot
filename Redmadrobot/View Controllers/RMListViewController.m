@@ -114,33 +114,49 @@ static NSString * const kUDCollages = @"collages";
     }]
    subscribeNext:^(UIImage *collageImage) {
      dispatch_async(dispatch_get_main_queue(), ^{
-       if ([MFMailComposeViewController canSendMail])
-       {
-         MFMailComposeViewController *mailComposeController = [[MFMailComposeViewController alloc] init];
-         mailComposeController.mailComposeDelegate = self;
-         [mailComposeController setSubject:@"Instagram collage"];
-         [mailComposeController setToRecipients:@[@"01001010@redmadrobot.com"]];
-         [mailComposeController setMessageBody:@"What a great collage!" isHTML:NO];
-         [mailComposeController addAttachmentData:UIImageJPEGRepresentation(collageImage, 0.9f)
-                                         mimeType:@"image/jpeg"
-                                         fileName:@"collage"];
-         [self presentViewController:mailComposeController animated:YES completion:nil];
+       
+       switch (composeController.shareType) {
+         case RMCollageShareTypeGallery:
+           UIImageWriteToSavedPhotosAlbum(collageImage, nil, nil, NULL);
+           break;
+           
+         case RMCollageShareTypeMail:
+         {
+           if ([MFMailComposeViewController canSendMail])
+           {
+             MFMailComposeViewController *mailComposeController = [[MFMailComposeViewController alloc] init];
+             mailComposeController.mailComposeDelegate = self;
+             [mailComposeController setSubject:@"Instagram collage"];
+             [mailComposeController setToRecipients:@[@"01001010@redmadrobot.com"]];
+             [mailComposeController setMessageBody:@"What a great collage!" isHTML:NO];
+             [mailComposeController addAttachmentData:UIImageJPEGRepresentation(collageImage, 0.9f)
+                                             mimeType:@"image/jpeg"
+                                             fileName:@"collage"];
+             [self presentViewController:mailComposeController animated:YES completion:nil];
+           }
+           else
+           {
+             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Mail account"
+                                                                 message:@"Please configure Mail account to be able to send emails.\n\nWould you like to save collage to Camera Roll?"
+                                                                delegate:nil
+                                                       cancelButtonTitle:@"No"
+                                                       otherButtonTitles:@"Yes", nil];
+             
+             [[alertView rac_buttonClickedSignal]
+              subscribeNext:^(NSNumber *buttonIndex) {
+                if (buttonIndex.intValue == 1)
+                  UIImageWriteToSavedPhotosAlbum(collageImage, nil, nil, NULL);
+              }];
+             [alertView show];
+           }
+           break;
+         }
+           
+         case RMCollageShareTypeUndefined:
+         default:
+           break;
        }
-       else
-       {
-         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Mail account"
-                                                             message:@"Please configure Mail account to be able to send emails.\n\nWould you like to save collage to Camera Roll?"
-                                                            delegate:nil
-                                                   cancelButtonTitle:@"No"
-                                                   otherButtonTitles:@"Yes", nil];
-         
-         [[alertView rac_buttonClickedSignal]
-          subscribeNext:^(NSNumber *buttonIndex) {
-            if (buttonIndex.intValue == 1)
-              UIImageWriteToSavedPhotosAlbum(collageImage, nil, nil, NULL);
-          }];
-         [alertView show];
-       }
+       
      });
    }];
 }

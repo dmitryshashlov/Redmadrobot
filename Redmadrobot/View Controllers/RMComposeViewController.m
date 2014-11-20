@@ -16,6 +16,7 @@
 
 @interface RMComposeViewController ()
 @property (nonatomic, readwrite) UIImage *collageImage;
+@property (nonatomic, readwrite) RMCollageShareType shareType;
 @end
 
 @implementation RMComposeViewController
@@ -124,13 +125,19 @@
       if ([_composeDelegate respondsToSelector:@selector(composeControllerDidFinish:)])
         [_composeDelegate composeControllerDidFinish:self];
       
-      // Show email controller
+      // Collage image
       [[RACObserve(collageController, collageImage)
        filter:^BOOL(UIImage *collageImage) {
          return collageImage != nil;
        }]
        subscribeNext:^(UIImage *collageImage) {
          self.collageImage = collageImage;
+       }];
+      
+      // Share type
+      [RACObserve(collageController, shareType)
+       subscribeNext:^(NSNumber *shareType) {
+         self.shareType = shareType.intValue;
        }];
       
       break;

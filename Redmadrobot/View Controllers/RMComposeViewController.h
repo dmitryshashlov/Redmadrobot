@@ -36,5 +36,6 @@
 @property (nonatomic, readonly) RMCollage *collage;
 @property (nonatomic, unsafe_unretained) id<RMComposeViewControllerDelegate> composeDelegate;
 @property (nonatomic, readonly) UIImage *collageImage;
+@property (nonatomic, readonly) RMCollageShareType shareType;
 
 @end
