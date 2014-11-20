@@ -298,12 +298,12 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
     {
       
       // Load more item
-      NSString *loadMoreString = @"Load more";
+      NSString *loadMoreString = NSLocalizedString(@"More", nil);
       UIBarButtonItem *loadMoreItem = [[UIBarButtonItem alloc] initWithTitle:loadMoreString
                                                                        style:UIBarButtonItemStylePlain
                                                                       target:self
                                                                       action:@selector(actionLoadMore:)];
-      loadMoreItem.width = 80.0f;
+      loadMoreItem.width = 56.0f;
       
       // Change item state
       [RACObserve(self, paginationInfo)
@@ -317,7 +317,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
          if (loading.boolValue)
          {
            loadMoreItem.enabled = NO;
-           loadMoreItem.title = @"Loading..";
+           loadMoreItem.title = NSLocalizedString(@"Loading..", nil);
          }
          else
          {

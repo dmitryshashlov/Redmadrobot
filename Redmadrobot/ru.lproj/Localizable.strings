@@ -20,5 +20,6 @@
 "What a great collage!" = "Какой чудесный коллаж!";
 "Mail account" = "Аккаунт в Mail";
 "Please configure Mail account to be able to send emails\n\nWould you like to save collage to Camera Roll?" = "Пожалуйста, добавьте аккаунт в приложении Mail для того, чтобы иметь возможность отправить коллаж по email'у\n\nСохранить коллаж в галерею?";
-"Load more" = "Еще";
+"More" = "Еще";
 "Collages" = "Коллажи";
+"Loading.." = "Загрузка..";
