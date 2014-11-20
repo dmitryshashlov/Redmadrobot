@@ -168,17 +168,7 @@ static NSString * const kUDCollages = @"collages";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
 {
-  switch (result) {
-    case MFMailComposeResultSent:
-    case MFMailComposeResultSaved:
-    {
-      break;
-    }
-    case MFMailComposeResultFailed:
-    case MFMailComposeResultCancelled:
-    default:
-      break;
-  }
+  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
