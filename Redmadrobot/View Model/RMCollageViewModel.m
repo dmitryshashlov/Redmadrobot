@@ -62,11 +62,16 @@
   // When every image loaded
   [[RACSignal merge:imageLoadSignals]
    subscribeCompleted:^{
-     UIGraphicsBeginImageContext(size);
-     CGContextRef context = UIGraphicsGetCurrentContext();
-     CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
+     
+     NSMutableArray *groupImages = [[NSMutableArray alloc] init];
      for (RMCollageGroup *group in _collage.groups)
      {
+       // Create graphics context
+       UIGraphicsBeginImageContext(size);
+       CGContextRef context = UIGraphicsGetCurrentContext();
+       CGContextSetStrokeColorWithColor(context, [UIColor blackColor].CGColor);
+       
+       // Calculate rects
        CGRect groupRect = [self rectForGroup:group size:size];
        CGSize imageSize = CGSizeMake(MAX(groupRect.size.width, groupRect.size.height),
                                      MAX(groupRect.size.width, groupRect.size.height));
@@ -75,12 +80,26 @@
                                      imageSize.width,
                                      imageSize.height);
        
+       // Clip context
+       CGContextClipToRect(context, groupRect);
+       
        // Draw image
        UIImage *groupImage = objc_getAssociatedObject(group, _cmd);
        [groupImage drawInRect:imageRect];
        
        // Stroke outline
        CGContextStrokeRect(context, groupRect);
+
+       // Store group image
+       UIImage *maskedGroupImage = UIGraphicsGetImageFromCurrentImageContext();
+       [groupImages addObject:maskedGroupImage];
+       UIGraphicsEndImageContext();
+     }
+     
+     // Merge all groups together
+     UIGraphicsBeginImageContext(size);
+     for (UIImage *image in groupImages) {
+       [image drawAtPoint:CGPointZero];
      }
      UIImage *collageImage = UIGraphicsGetImageFromCurrentImageContext();
      UIGraphicsEndImageContext();
