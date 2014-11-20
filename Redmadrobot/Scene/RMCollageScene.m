@@ -220,7 +220,7 @@ CGSize kCollageSize = { 288.0f , 288.0f };
       && _originIndexPath)
   {
     // Group sectors
-    if (self.selectedIndexPaths.count > 1)
+    if (self.selectedIndexPaths.count)
       [_collage groupSectorsForIndexPaths:self.selectedIndexPaths originSectorIndexPath:_originIndexPath];
 
     self.selectionStartPoint = CGPointZero;
@@ -282,6 +282,7 @@ CGSize kCollageSize = { 288.0f , 288.0f };
                             green:arc4random_uniform(255.0f) / 255.0f
                              blue:arc4random_uniform(255.0f) / 255.0f
                             alpha:0.5f];
+    color = [UIColor whiteColor];
     [_colors setObject:color forKey:key];
   }
   
