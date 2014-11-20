@@ -231,7 +231,18 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)actionReset:(id)sender
 {
-  // TODO
+  switch (_step) {
+    case RMCollageProductionStepWireframe:
+      [_collageViewModel.collage clearGroups];
+      break;
+      
+    case RMCollageProductionStepPick:
+      [_collageViewModel.collage clearGroupsMedia];
+      break;
+      
+    case RMCollageProductionStepGrid:
+      break;
+  }
 }
 
 @end

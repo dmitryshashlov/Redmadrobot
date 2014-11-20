@@ -152,13 +152,7 @@
     _sectors = [NSArray arrayWithArray:sectorsMutable];
     
     // Create single-sector groups
-    NSMutableArray *groupsMutable = [[NSMutableArray alloc] init];
-    for (RMCollageSector *sector in _sectors) {
-      RMCollageGroup *group = [[RMCollageGroup alloc] initWithSectors:@[sector]];
-      group.originSector = sector;
-      [groupsMutable addObject:group];
-    }
-    _groups = [[NSMutableArray alloc] initWithArray:groupsMutable];    
+    [self bootstrapGroups];
   }
   return self;
 }
@@ -202,6 +196,21 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Private
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)bootstrapGroups
+{
+  NSMutableArray *groupsMutable = [self mutableArrayValueForKeyPath:@"groups"];
+  for (RMCollageSector *sector in _sectors) {
+    RMCollageGroup *group = [[RMCollageGroup alloc] initWithSectors:@[sector]];
+    group.originSector = sector;
+    [groupsMutable addObject:group];
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - Grouping
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -227,6 +236,20 @@
   RMCollageGroup *group = [[RMCollageGroup alloc] initWithSectors:sectors];
   group.originSector = [self sectorForIndexPath:originIndexPath];
   [groupsMutable addObject:group];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)clearGroups
+{
+  NSMutableArray *groupsMutable = [self mutableArrayValueForKeyPath:@"groups"];
+  [groupsMutable removeAllObjects];
+  [self bootstrapGroups];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)clearGroupsMedia
+{
+  // TODO
 }
 
 @end

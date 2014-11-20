@@ -60,4 +60,7 @@ typedef enum {
 - (id)initWithSize:(NSNumber *)size;
 - (void)groupSectorsForIndexPaths:(NSArray *)sectorIndexPaths originSectorIndexPath:(NSIndexPath *)originIndexPath;
 
+- (void)clearGroups;
+- (void)clearGroupsMedia;
+
 @end
