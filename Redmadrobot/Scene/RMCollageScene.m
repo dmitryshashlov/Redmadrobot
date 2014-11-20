@@ -12,6 +12,8 @@
 #import "RMGroupNode.h"
 
 static CGFloat kDashLength = 10.0f;
+static NSString * const kImageKeypathLowRes = @"lowResolutionImageURL";
+static NSString * const kImageKeypathHiRes = @"standardResolutionImageURL";
 CGSize kCollageSize = { 288.0f , 288.0f };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,7 +86,7 @@ CGSize kCollageSize = { 288.0f , 288.0f };
     // Observe group changing
     [RACObserve(self.collage, groups)
      subscribeNext:^(id x) {
-       [self configureSceneForStep:_step];
+       [self configureSceneForStep:_step imageKeypath:kImageKeypathLowRes completionBlock:nil];
      }];
     
     // Observe group selecting
@@ -107,7 +109,7 @@ CGSize kCollageSize = { 288.0f , 288.0f };
 #pragma mark - Configure
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)configureSceneForStep:(RMCollageProductionStep)step
+- (void)configureSceneForStep:(RMCollageProductionStep)step imageKeypath:(NSString *)imageKeypath completionBlock:(void(^)(void))completionBlock
 {
   [_perimeterNode removeAllChildren];
   
@@ -203,15 +205,18 @@ CGSize kCollageSize = { 288.0f , 288.0f };
       }
       
       // Group nodes
+      NSMutableArray *imageLoadSignals = [[NSMutableArray alloc] init];
       void (^reactiveBlock)(RMCollageGroup *, SKShapeNode *) = ^(RMCollageGroup *group, SKShapeNode *groupNode){
           RACDisposable *groupDisposable = [[[RACObserve(group, media) distinctUntilChanged]
                                              filter:^BOOL(InstagramMedia *media) {
                                                return media != nil;
                                              }]
                                             subscribeNext:^(InstagramMedia *media) {
-                                              [[NSData rac_readContentsOfURL:group.media.lowResolutionImageURL
-                                                                     options:0
-                                                                   scheduler:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]]
+                                              RACSignal *imageLoadSignal = [NSData rac_readContentsOfURL:[group.media valueForKeyPath:imageKeypath]
+                                                                                                 options:0
+                                                                                               scheduler:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]];
+                                              [imageLoadSignals addObject:imageLoadSignal];
+                                              [imageLoadSignal
                                                subscribeNext:^(NSData *data) {
                                                  SKTexture *texture = [SKTexture textureWithImage:[UIImage imageWithData:data]];
                                                  dispatch_async(dispatch_get_main_queue(), ^{
@@ -246,6 +251,13 @@ CGSize kCollageSize = { 288.0f , 288.0f };
       
       // Sector nodes
       bootstrapSectorsBlock();
+      
+      // Merge image load signals to call completino block
+      [[RACSignal merge:imageLoadSignals]
+       subscribeCompleted:^{
+         if (completionBlock)
+           completionBlock();
+       }];
 
       break;
     }
@@ -444,7 +456,13 @@ CGSize kCollageSize = { 288.0f , 288.0f };
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)update
 {
-  [self configureSceneForStep:_step];
+  [self configureSceneForStep:_step imageKeypath:kImageKeypathLowRes completionBlock:nil];
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)updateWithFullImagesWithCompletionBlock:(void (^)(void))comletionBlock
+{
+  [self configureSceneForStep:_step imageKeypath:kImageKeypathHiRes completionBlock:comletionBlock];
 }
 
 @end

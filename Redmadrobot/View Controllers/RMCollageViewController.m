@@ -351,6 +351,22 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)actionCompleted:(id)sender
 {
+  if (_step == RMCollageProductionStepPick)
+  {
+    // Pre-render with real images
+    [_collageScene updateWithFullImagesWithCompletionBlock:^{
+      [[[RACSignal interval:1
+                onScheduler:[RACScheduler mainThreadScheduler]] take:1]
+       subscribeNext:^(id x) {
+         UIGraphicsBeginImageContextWithOptions(_sceneView.bounds.size, NO, 2.0f);
+         [_sceneView drawViewHierarchyInRect:_sceneView.bounds afterScreenUpdates:YES];
+         UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+         UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, NULL);
+         UIGraphicsEndImageContext();
+       }];
+    }];
+  }
+  
   if ([_collageDelegate respondsToSelector:@selector(collageControllerDidFinish:)])
     [_collageDelegate collageControllerDidFinish:self];
 }
