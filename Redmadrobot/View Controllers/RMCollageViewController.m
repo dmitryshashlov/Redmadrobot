@@ -69,7 +69,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
       case RMCollageProductionStepGrid:
       case RMCollageProductionStepWireframe:
       {
-        UIBarButtonItem *nextItem = [[UIBarButtonItem alloc] initWithTitle:@"Next"
+        UIBarButtonItem *nextItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Next", nil)
                                                                      style:UIBarButtonItemStylePlain
                                                                     target:self
                                                                     action:@selector(actionCompleted:)];
@@ -79,7 +79,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
         
       case RMCollageProductionStepPick:
       {
-        UIBarButtonItem *mailItem = [[UIBarButtonItem alloc] initWithTitle:@"Share"
+        UIBarButtonItem *mailItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Share", nil)
                                                                      style:UIBarButtonItemStyleDone
                                                                     target:self
                                                                     action:@selector(actionShare:)];
@@ -89,7 +89,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
     }
     
     // Back item
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", nil)
                                                                              style:UIBarButtonItemStylePlain
                                                                             target:nil
                                                                             action:nil];
@@ -142,11 +142,13 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
   [super viewWillLayoutSubviews];
   
   // Observe grid size changing
+  @weakify(self);
   [[[RACObserve(self, gridSize) distinctUntilChanged]
     filter:^BOOL(NSNumber *size) {
       return size != nil;
     }]
    subscribeNext:^(NSNumber *size) {
+     @strongify(self);
      self.collageViewModel = [[RMCollageViewModel alloc] initWithCollage:[[RMCollage alloc] initWithSize:size]];
    }];
   
@@ -205,8 +207,10 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
        }];
       
       // Observe value changing
+      @weakify(self);
       [RACObserve(slider, value)
        subscribeNext:^(NSNumber *value) {
+         @strongify(self);
          self.gridSize = @(roundf(value.floatValue));
        }];
       slider.value = _collageViewModel.collage.size.floatValue;
@@ -404,7 +408,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 - (void)actionShufle:(id)sender
 {
   for (RMCollageGroup *group in _collageViewModel.collage.groups) {
-    int randomIndex = arc4random_uniform(_media.count);
+    int randomIndex = arc4random_uniform((int)_media.count);
     group.media = [_media objectAtIndex:randomIndex];
   }
 }

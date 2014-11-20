@@ -65,17 +65,15 @@ static UIImage *__placeholderImage = nil;
     [_disposable dispose];
     _disposable = nil;
     
-    // NSLog(@"Download thumbnail: [%@] %@", _media.Id, _media.thumbnailURL);
-    
     // Download thumbnail image
-    _disposable = [[NSData rac_readContentsOfURL:_media.thumbnailURL
-                                         options:0
-                                       scheduler:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]]
+    @weakify(self);
+    _disposable = [[[NSData rac_readContentsOfURL:_media.thumbnailURL
+                                          options:0
+                                        scheduler:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]]
+                    deliverOn:[RACScheduler mainThreadScheduler]]
                    subscribeNext:^(NSData *data) {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                       // NSLog(@"Download finished: [%@] %@", _media.Id, _media.thumbnailURL);
-                       _imageView.image = [UIImage imageWithData:data];
-                     });
+                     @strongify(self);
+                     self.imageView.image = [UIImage imageWithData:data];
                    } error:^(NSError *error) {
                      NSLog(@"%@", error.localizedDescription);
                    }];

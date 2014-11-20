@@ -36,7 +36,7 @@
   
   // Search bar
   UISearchBar *searchBar = [[UISearchBar alloc] init];
-  searchBar.placeholder = @"Search user";
+  searchBar.placeholder = NSLocalizedString(@"Search user by name", nil);
   self.navigationItem.titleView = searchBar;
   
   // Search controller

@@ -7,6 +7,7 @@ pod 'CrashlyticsFramework', '~> 2.2'
 pod 'PureLayout', '~> 1.0'
 pod 'InstagramKit', '~> 3.5'
 pod 'AMPAvatarView', '~> 1.1'
+pod 'libextobjc', '~> 0.4'
 end
 
 target "RedmadrobotTests" do

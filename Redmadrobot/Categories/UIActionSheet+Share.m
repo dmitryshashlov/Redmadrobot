@@ -20,9 +20,9 @@
 {
   UIActionSheet *shareSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                           delegate:nil
-                                                 cancelButtonTitle:@"Cancel"
+                                                 cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
                                             destructiveButtonTitle:nil
-                                                 otherButtonTitles:@"Save to Camera Roll", @"Send via email", nil];
+                                                 otherButtonTitles:NSLocalizedString(@"Save to Camera Roll", nil), NSLocalizedString(@"Send via email", nil), nil];
   [[shareSheet rac_buttonClickedSignal]
    subscribeNext:^(NSNumber *buttonIndex) {
      RMCollageShareType shareType = RMCollageShareTypeUndefined;
