@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4ED1E83652F64CE986D03492 /* libPods-Redmadrobot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1839F66EA114472B15C35F8 /* libPods-Redmadrobot.a */; };
+		B6621A331A1E6962003FE31B /* UIActionSheet+Share.m in Sources */ = {isa = PBXBuildFile; fileRef = B6621A321A1E6962003FE31B /* UIActionSheet+Share.m */; };
+		B6621A361A1E6D64003FE31B /* RMCollageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6621A351A1E6D64003FE31B /* RMCollageCell.m */; };
 		B68669FE1A1CA9C100CEDCA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6866A001A1CA9C100CEDCA8 /* Localizable.strings */; };
 		B6866A081A1CCE9A00CEDCA8 /* RMListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6866A071A1CCE9A00CEDCA8 /* RMListViewController.m */; };
 		B6866A0B1A1CEAA700CEDCA8 /* RMSectorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B6866A0A1A1CEAA700CEDCA8 /* RMSectorNode.m */; };
@@ -43,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B6621A311A1E6962003FE31B /* UIActionSheet+Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIActionSheet+Share.h"; path = "Categories/UIActionSheet+Share.h"; sourceTree = "<group>"; };
+		B6621A321A1E6962003FE31B /* UIActionSheet+Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIActionSheet+Share.m"; path = "Categories/UIActionSheet+Share.m"; sourceTree = "<group>"; };
+		B6621A341A1E6D64003FE31B /* RMCollageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollageCell.h; path = Views/RMCollageCell.h; sourceTree = "<group>"; };
+		B6621A351A1E6D64003FE31B /* RMCollageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCollageCell.m; path = Views/RMCollageCell.m; sourceTree = "<group>"; };
 		B68669FF1A1CA9C100CEDCA8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B6866A011A1CA9CA00CEDCA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B6866A061A1CCE9A00CEDCA8 /* RMListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMListViewController.h; path = "View Controllers/RMListViewController.h"; sourceTree = "<group>"; };
@@ -121,6 +127,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B6621A301A1E6903003FE31B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B6621A311A1E6962003FE31B /* UIActionSheet+Share.h */,
+				B6621A321A1E6962003FE31B /* UIActionSheet+Share.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		B6866A0F1A1CEB0400CEDCA8 /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +181,8 @@
 				B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */,
 				B6BED9401A1DF43A0073B5C7 /* RMMediaCollectionViewCell.h */,
 				B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */,
+				B6621A341A1E6D64003FE31B /* RMCollageCell.h */,
+				B6621A351A1E6D64003FE31B /* RMCollageCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -223,6 +240,7 @@
 		B6D981141A1B5B0400A7A268 /* Redmadrobot */ = {
 			isa = PBXGroup;
 			children = (
+				B6621A301A1E6903003FE31B /* Categories */,
 				B6CDF77C1A1C99BD0006C6BD /* Scene */,
 				B6CDF7751A1C908E0006C6BD /* Model */,
 				B6CDF7741A1C90040006C6BD /* View Model */,
@@ -410,8 +428,10 @@
 				B69253651A1BA05500502A53 /* RMUserCell.m in Sources */,
 				B6CDF7821A1C9BA80006C6BD /* RMCollageViewController.m in Sources */,
 				B6866A0B1A1CEAA700CEDCA8 /* RMSectorNode.m in Sources */,
+				B6621A331A1E6962003FE31B /* UIActionSheet+Share.m in Sources */,
 				B6D9811B1A1B5B0400A7A268 /* AppDelegate.m in Sources */,
 				B6CDF7721A1BAE480006C6BD /* RMAvatarView.m in Sources */,
+				B6621A361A1E6D64003FE31B /* RMCollageCell.m in Sources */,
 				B6CDF77F1A1C9A360006C6BD /* RMCollageScene.m in Sources */,
 				B6BED9421A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m in Sources */,
 				B6D981181A1B5B0400A7A268 /* main.m in Sources */,

@@ -27,7 +27,7 @@ typedef enum {
 
 @class RMCollage;
 
-@interface RMCollageSector : NSObject<NSCoding>
+@interface RMCollageSector : NSObject
 
 @property (nonatomic, readonly) RMCollage *collage;
 @property (nonatomic, readonly) InstagramMedia *media;
@@ -63,12 +63,16 @@ typedef enum {
 @property (nonatomic, readonly) NSNumber *size;
 @property (nonatomic, readonly) NSArray *sectors;
 @property (nonatomic, readonly) NSMutableArray *groups;
+@property (nonatomic, readwrite) UIImage *previewImage;
 
 - (id)initWithSize:(NSNumber *)size;
 - (void)groupSectorsForIndexPaths:(NSArray *)sectorIndexPaths originSectorIndexPath:(NSIndexPath *)originIndexPath;
 - (RMCollageGroup *)groupContainingSector:(RMCollageSector *)sector;
+- (void)save;
 
 - (void)clearGroups;
 - (void)clearGroupsMedia;
+
++ (NSArray *)savedCollages;
 
 @end

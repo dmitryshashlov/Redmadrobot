@@ -11,6 +11,7 @@
 #import "RMCollageScene.h"
 #import "RMMediaCollectionViewCell.h"
 #import <InstagramKit/InstagramKit.h>
+#import "UIActionSheet+Share.h"
 
 static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 
@@ -411,26 +412,10 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)actionShare:(id)sender
 {
-  UIActionSheet *shareSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                          delegate:nil
-                                                 cancelButtonTitle:@"Cancel"
-                                            destructiveButtonTitle:nil
-                                                 otherButtonTitles:@"Save to Camera Roll", @"Send via email", nil];
-  [[shareSheet rac_buttonClickedSignal]
-   subscribeNext:^(NSNumber *buttonIndex) {
-     switch (buttonIndex.intValue) {
-       case 0:
-         _shareType = RMCollageShareTypeGallery;
-         break;
-         
-       case 1:
-         _shareType = RMCollageShareTypeMail;
-         break;
-     }
-     
-     // Send completed
-     [self actionCompleted:nil];
-   }];
+  UIActionSheet *shareSheet = [UIActionSheet shareActionSheetWithBlock:^(NSNumber *shareType) {
+    self.shareType = shareType.intValue;
+    [self actionCompleted:nil];
+  }];
   [shareSheet showInView:self.view];
 }
 
