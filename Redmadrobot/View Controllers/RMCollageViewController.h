@@ -25,12 +25,16 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-@interface RMCollageViewController : UIViewController
+@interface RMCollageViewController : UIViewController <
+  UICollectionViewDelegate,
+  UICollectionViewDataSource
+>
 
 - (id)initWithCollage:(RMCollage *)collage productionStep:(RMCollageProductionStep)step;
 
 @property (nonatomic, readonly) RMCollageViewModel *collageViewModel;
 @property (nonatomic, readonly) RMCollageProductionStep step;
 @property (nonatomic) id <RMCollageViewControllerDelegate> collageDelegate;
+@property (nonatomic) InstagramUser *user;
 
 @end

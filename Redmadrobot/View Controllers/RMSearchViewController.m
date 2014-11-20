@@ -46,10 +46,8 @@
   self.searchController.searchResultsDataSource = self;
   self.searchController.displaysSearchBarInNavigationBar = YES;
   
-  // Cancel item
-  UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(actionCancel)];
-  cancelItem.tintColor = [UIColor redColor];
-  self.navigationItem.leftBarButtonItem = cancelItem;
+  // Hide toolbar
+  [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -148,12 +146,6 @@
                                                 failure:^(NSError *error) {
                                                   NSLog(@"%@", error.localizedDescription);
                                                 }];
-}
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)actionCancel
-{
-  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

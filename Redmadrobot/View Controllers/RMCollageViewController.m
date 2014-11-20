@@ -9,6 +9,10 @@
 #import "RMCollageViewController.h"
 #import <SpriteKit/SpriteKit.h>
 #import "RMCollageScene.h"
+#import "RMMediaCollectionViewCell.h"
+#import <InstagramKit/InstagramKit.h>
+
+static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -18,6 +22,8 @@
 @property (nonatomic) SKView *sceneView;
 @property (nonatomic) RMCollageViewModel *collageViewModel;
 @property (nonatomic) NSNumber *gridSize;
+@property (nonatomic) UICollectionView *collectionView;
+@property (nonatomic) NSMutableArray *media;
 @end
 
 @implementation RMCollageViewController
@@ -34,6 +40,9 @@
   {
     _collageViewModel = [[RMCollageViewModel alloc] initWithCollage:collage];
     _step = step;
+    
+    // Media mutable
+    _media = [[NSMutableArray alloc] init];
     
     // Title
     switch (_step) {
@@ -73,6 +82,12 @@
         break;
       }
     }
+    
+    // Back item
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:nil
+                                                                            action:nil];
   }
   return self;
 }
@@ -99,6 +114,19 @@
   
   // Configure
   [self configureViewForStep:_step];
+  
+  // Load media
+  if (_step == RMCollageProductionStepPick)
+  {
+    [[InstagramEngine sharedEngine] getMediaForUser:_user.Id
+                                        withSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
+                                          NSMutableArray *mediaMutable = [self mutableArrayValueForKeyPath:@"media"];
+                                          [mediaMutable addObjectsFromArray:media];
+                                          [_collectionView reloadData];
+                                        } failure:^(NSError *error) {
+                                          NSLog(@"%@", error.localizedDescription);
+                                        }];
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -194,27 +222,66 @@
     }
       
     case RMCollageProductionStepWireframe:
-    case RMCollageProductionStepPick:
     {
-      // Reset button
-      UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-      [resetButton setImage:[UIImage imageNamed:@"Reset"] forState:UIControlStateNormal];
-      resetButton.frame = CGRectMake(collageOffset,
-                                     _sceneView.frame.origin.y + CGRectGetWidth(self.view.bounds),
-                                     kCollageSize.width,
-                                     44.0f);
-      [resetButton addTarget:self action:@selector(actionReset:) forControlEvents:UIControlEventTouchUpInside];
-      
-      // Add button on toolbar
-      UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:resetButton];
-      self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                            buttonItem,
-                            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
-      
+      // Buttons
+      [self configureButtons];
+
       break;
     }
       
+    case RMCollageProductionStepPick:
+    {
+      // Buttons
+      [self configureButtons];
+      
+      // Collection view layout
+      UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+      flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+      flowLayout.itemSize = CGSizeMake(64.0f,
+                                       64.0f);
+      flowLayout.minimumInteritemSpacing = 0.0f;
+      flowLayout.minimumLineSpacing = 0.0f;
+      
+      // Collection view
+      CGFloat collectionViewOffsetV = _sceneView.frame.origin.y + CGRectGetWidth(self.view.bounds);
+      CGFloat interfaceInsetHeight = self.navigationController.toolbar.frame.size.height;
+      self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0.0f,
+                                                                               collectionViewOffsetV,
+                                                                               CGRectGetWidth(self.view.bounds),
+                                                                               CGRectGetHeight(self.view.bounds) - interfaceInsetHeight - collectionViewOffsetV)
+                                               collectionViewLayout:flowLayout];
+      [self.view addSubview:_collectionView];
+      
+      // Collection view configuration
+      _collectionView.backgroundColor = [UIColor clearColor];
+      [_collectionView registerClass:[RMMediaCollectionViewCell class] forCellWithReuseIdentifier:kCollectionCellMedia];
+      _collectionView.delegate = self;
+      _collectionView.dataSource = self;
+      
+      break;
+    }
   }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)configureButtons
+{
+  CGFloat collageOffset = (CGRectGetWidth(self.view.bounds) - kCollageSize.width) / 2;
+  
+  // Reset button
+  UIButton *resetButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+  [resetButton setImage:[UIImage imageNamed:@"Reset"] forState:UIControlStateNormal];
+  resetButton.frame = CGRectMake(collageOffset,
+                                 _sceneView.frame.origin.y + CGRectGetWidth(self.view.bounds),
+                                 kCollageSize.width,
+                                 44.0f);
+  [resetButton addTarget:self action:@selector(actionReset:) forControlEvents:UIControlEventTouchUpInside];
+  
+  // Add button on toolbar
+  UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithCustomView:resetButton];
+  self.toolbarItems = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                        buttonItem,
+                        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -243,6 +310,34 @@
     case RMCollageProductionStepGrid:
       break;
   }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Collection View Delegate
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+  return 1;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+  return _media.count;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+  RMMediaCollectionViewCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:kCollectionCellMedia
+                                                                               forIndexPath:indexPath];
+  
+  InstagramMedia *media = [_media objectAtIndex:indexPath.row];
+  cell.media = media;
+  
+  return cell;
 }
 
 @end

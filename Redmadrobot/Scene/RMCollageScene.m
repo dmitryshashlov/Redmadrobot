@@ -138,6 +138,7 @@ CGSize kCollageSize = { 288.0f , 288.0f };
     }
       
     case RMCollageProductionStepWireframe:
+    case RMCollageProductionStepPick:
     {
       // Group nodes
       for (RMCollageGroup *group in _collage.groups) {
@@ -162,10 +163,6 @@ CGSize kCollageSize = { 288.0f , 288.0f };
       break;
     }
       
-    case RMCollageProductionStepPick:
-    {
-      break;
-    }
   }
 }
 

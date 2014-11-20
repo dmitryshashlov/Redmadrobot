@@ -8,6 +8,7 @@
 
 #import "RMComposeViewController.h"
 #import "RMCollageViewController.h"
+#import "RMSearchViewController.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -88,15 +89,42 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)collageControllerDidFinish:(RMCollageViewController *)collageController
 {
-  if (collageController.step < RMCollageProductionStepPick)
-  {
-    RMCollageViewController *nextStepController = [[RMCollageViewController alloc] initWithCollage:collageController.collageViewModel.collage
-                                                                                    productionStep:collageController.step + 1];
-    nextStepController.collageDelegate = self;
-    [self pushViewController:nextStepController animated:YES];
+  switch (collageController.step) {
+    case RMCollageProductionStepGrid:
+    {
+      RMCollageViewController *nextStepController = [[RMCollageViewController alloc] initWithCollage:collageController.collageViewModel.collage
+                                                                                      productionStep:RMCollageProductionStepWireframe];
+      nextStepController.collageDelegate = self;
+      [self pushViewController:nextStepController animated:YES];
+      break;
+    }
+      
+    case RMCollageProductionStepWireframe:
+    {
+      RMSearchViewController *searchController = [[RMSearchViewController alloc] initWithStyle:UITableViewStylePlain];
+      [self pushViewController:searchController animated:YES];
+      
+      // Observe user picking
+      [[RACObserve(searchController, selectedUser)
+        filter:^BOOL(InstagramUser *user) {
+          return user != nil;
+        }]
+       subscribeNext:^(InstagramUser *user) {
+         RMCollageViewController *nextStepController = [[RMCollageViewController alloc] initWithCollage:collageController.collageViewModel.collage
+                                                                                         productionStep:RMCollageProductionStepPick];
+         nextStepController.user = user;
+         [self pushViewController:nextStepController animated:YES];
+       }];
+      
+      break;
+    }
+    case RMCollageProductionStepPick:
+    {
+      if ([_composeDelegate respondsToSelector:@selector(composeControllerDidFinish:)])
+        [_composeDelegate composeControllerDidFinish:self];
+      break;
+    }
   }
-  else if ([_composeDelegate respondsToSelector:@selector(composeControllerDidFinish:)])
-    [_composeDelegate composeControllerDidFinish:self];
 }
 
 @end

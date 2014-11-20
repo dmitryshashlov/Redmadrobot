@@ -15,6 +15,8 @@
 		B692535F1A1B9C7D00502A53 /* InstagramKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = B692535E1A1B9C7D00502A53 /* InstagramKit.plist */; };
 		B69253621A1B9E2900502A53 /* RMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253611A1B9E2900502A53 /* RMSearchViewController.m */; };
 		B69253651A1BA05500502A53 /* RMUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253641A1BA05500502A53 /* RMUserCell.m */; };
+		B6BED93F1A1DF3F20073B5C7 /* RMMediaViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED93E1A1DF3F20073B5C7 /* RMMediaViewModel.m */; };
+		B6BED9421A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */; };
 		B6CDF76F1A1BA7440006C6BD /* RMAutolayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */; };
 		B6CDF7721A1BAE480006C6BD /* RMAvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7711A1BAE480006C6BD /* RMAvatarView.m */; };
 		B6CDF7781A1C90A00006C6BD /* RMCollage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7771A1C90A00006C6BD /* RMCollage.m */; };
@@ -53,6 +55,10 @@
 		B69253611A1B9E2900502A53 /* RMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMSearchViewController.m; path = "View Controllers/RMSearchViewController.m"; sourceTree = "<group>"; };
 		B69253631A1BA05500502A53 /* RMUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMUserCell.h; path = Views/RMUserCell.h; sourceTree = "<group>"; };
 		B69253641A1BA05500502A53 /* RMUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMUserCell.m; path = Views/RMUserCell.m; sourceTree = "<group>"; };
+		B6BED93D1A1DF3F20073B5C7 /* RMMediaViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMMediaViewModel.h; path = "View Model/RMMediaViewModel.h"; sourceTree = "<group>"; };
+		B6BED93E1A1DF3F20073B5C7 /* RMMediaViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMMediaViewModel.m; path = "View Model/RMMediaViewModel.m"; sourceTree = "<group>"; };
+		B6BED9401A1DF43A0073B5C7 /* RMMediaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMMediaCollectionViewCell.h; path = Views/RMMediaCollectionViewCell.h; sourceTree = "<group>"; };
+		B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMMediaCollectionViewCell.m; path = Views/RMMediaCollectionViewCell.m; sourceTree = "<group>"; };
 		B6CDF76D1A1BA7440006C6BD /* RMAutolayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMAutolayoutCell.h; path = Views/RMAutolayoutCell.h; sourceTree = "<group>"; };
 		B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMAutolayoutCell.m; path = Views/RMAutolayoutCell.m; sourceTree = "<group>"; };
 		B6CDF7701A1BAE480006C6BD /* RMAvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMAvatarView.h; path = Views/RMAvatarView.h; sourceTree = "<group>"; };
@@ -154,6 +160,8 @@
 				B69253641A1BA05500502A53 /* RMUserCell.m */,
 				B6CDF76D1A1BA7440006C6BD /* RMAutolayoutCell.h */,
 				B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */,
+				B6BED9401A1DF43A0073B5C7 /* RMMediaCollectionViewCell.h */,
+				B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -163,6 +171,8 @@
 			children = (
 				B6CDF7791A1C928D0006C6BD /* RMCollageViewModel.h */,
 				B6CDF77A1A1C928D0006C6BD /* RMCollageViewModel.m */,
+				B6BED93D1A1DF3F20073B5C7 /* RMMediaViewModel.h */,
+				B6BED93E1A1DF3F20073B5C7 /* RMMediaViewModel.m */,
 			);
 			name = "View Model";
 			sourceTree = "<group>";
@@ -399,7 +409,9 @@
 				B6D9811B1A1B5B0400A7A268 /* AppDelegate.m in Sources */,
 				B6CDF7721A1BAE480006C6BD /* RMAvatarView.m in Sources */,
 				B6CDF77F1A1C9A360006C6BD /* RMCollageScene.m in Sources */,
+				B6BED9421A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m in Sources */,
 				B6D981181A1B5B0400A7A268 /* main.m in Sources */,
+				B6BED93F1A1DF3F20073B5C7 /* RMMediaViewModel.m in Sources */,
 				B6CDF7851A1C9DCC0006C6BD /* RMComposeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
