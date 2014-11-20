@@ -139,8 +139,8 @@
   if (self)
   {
     _size = size;
-    _groups = [[NSMutableArray alloc] init];
     
+    // Fill collage with empty sectors
     NSMutableArray *sectorsMutable = [[NSMutableArray alloc] init];
     for (int i = 0; i < size.intValue; i++) {
       for (int n = 0; n < size.intValue; n++) {
@@ -150,6 +150,15 @@
       }
     }
     _sectors = [NSArray arrayWithArray:sectorsMutable];
+    
+    // Create single-sector groups
+    NSMutableArray *groupsMutable = [[NSMutableArray alloc] init];
+    for (RMCollageSector *sector in _sectors) {
+      RMCollageGroup *group = [[RMCollageGroup alloc] initWithSectors:@[sector]];
+      group.originSector = sector;
+      [groupsMutable addObject:group];
+    }
+    _groups = [[NSMutableArray alloc] initWithArray:groupsMutable];    
   }
   return self;
 }

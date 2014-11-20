@@ -139,14 +139,8 @@ CGSize kCollageSize = { 288.0f , 288.0f };
       
     case RMCollageProductionStepWireframe:
     {
-      NSMutableArray *hiddenSectors = [[NSMutableArray alloc] init];
-      
       // Group nodes
       for (RMCollageGroup *group in _collage.groups) {
-        for (RMCollageSector *sector in group.sectors) {
-          [hiddenSectors addObject:sector];
-        }
-        
         SKShapeNode *groupNode = [RMGroupNode nodeWithGroup:group];
         groupNode.strokeColor = [UIColor blackColor];
         groupNode.lineWidth = 1.0f;
@@ -160,8 +154,7 @@ CGSize kCollageSize = { 288.0f , 288.0f };
         sectorNode.strokeColor = [UIColor blackColor];
         sectorNode.lineWidth = 1.0f;
         sectorNode.fillColor = [self colorForIndexPath:sector.indexPath];
-        if ([hiddenSectors containsObject:sector])
-          sectorNode.hidden = YES;
+        sectorNode.hidden = YES;
         
         [_perimeterNode addChild:sectorNode];
       }
