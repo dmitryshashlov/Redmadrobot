@@ -26,6 +26,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 @property (nonatomic) UICollectionView *collectionView;
 @property (nonatomic) NSMutableArray *media;
 @property (nonatomic) InstagramPaginationInfo *paginationInfo;
+@property (nonatomic) BOOL loading;
 @end
 
 @implementation RMCollageViewController
@@ -287,7 +288,8 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
     {
       
       // Load more item
-      UIBarButtonItem *loadMoreItem = [[UIBarButtonItem alloc] initWithTitle:@"Load more"
+      NSString *loadMoreString = @"Load more";
+      UIBarButtonItem *loadMoreItem = [[UIBarButtonItem alloc] initWithTitle:loadMoreString
                                                                        style:UIBarButtonItemStylePlain
                                                                       target:self
                                                                       action:@selector(actionLoadMore:)];
@@ -297,6 +299,21 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
       [RACObserve(self, paginationInfo)
        subscribeNext:^(InstagramPaginationInfo *paginationInfo) {
          loadMoreItem.enabled = (paginationInfo != nil);
+       }];
+      
+      // Change loading state
+      [RACObserve(self, loading)
+       subscribeNext:^(NSNumber *loading) {
+         if (loading.boolValue)
+         {
+           loadMoreItem.enabled = NO;
+           loadMoreItem.title = @"Loading..";
+         }
+         else
+         {
+           loadMoreItem.enabled = YES;
+           loadMoreItem.title = loadMoreString;
+         }
        }];
       
       self.toolbarItems = @[buttonItem,
@@ -311,15 +328,18 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)loadNextPage
 {
+  self.loading = YES;
   [[InstagramEngine sharedEngine] getMediaForUser:_user.Id
                                             count:20
                                             maxId:self.paginationInfo.nextMaxId
                                       withSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
+                                        self.loading = NO;
                                         self.paginationInfo = paginationInfo;
                                         NSMutableArray *mediaMutable = [self mutableArrayValueForKeyPath:@"media"];
                                         [mediaMutable addObjectsFromArray:media];
                                         [_collectionView reloadData];
                                       } failure:^(NSError *error) {
+                                        self.loading = NO;
                                         NSLog(@"%@", error.localizedDescription);
                                       }];
 }
