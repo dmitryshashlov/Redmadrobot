@@ -36,5 +36,6 @@
 @property (nonatomic, readonly) RMCollageProductionStep step;
 @property (nonatomic) id <RMCollageViewControllerDelegate> collageDelegate;
 @property (nonatomic) InstagramUser *user;
+@property (nonatomic, readonly) UIImage *collageImage;
 
 @end

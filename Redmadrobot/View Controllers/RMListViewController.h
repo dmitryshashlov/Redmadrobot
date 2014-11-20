@@ -14,7 +14,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @interface RMListViewController : UITableViewController <
-  RMComposeViewControllerDelegate
+  RMComposeViewControllerDelegate,
+  MFMailComposeViewControllerDelegate
 >
 
 @end

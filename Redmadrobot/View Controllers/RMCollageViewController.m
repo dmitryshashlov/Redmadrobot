@@ -27,6 +27,7 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
 @property (nonatomic) NSMutableArray *media;
 @property (nonatomic) InstagramPaginationInfo *paginationInfo;
 @property (nonatomic) BOOL loading;
+@property (nonatomic, readwrite) UIImage *collageImage;
 @end
 
 @implementation RMCollageViewController
@@ -361,8 +362,9 @@ static NSString * const kCollectionCellMedia = @"CollectionCellMedia";
          UIGraphicsBeginImageContextWithOptions(_sceneView.bounds.size, NO, 2.0f);
          [_sceneView drawViewHierarchyInRect:_sceneView.bounds afterScreenUpdates:YES];
          UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
-         UIImageWriteToSavedPhotosAlbum(viewImage, nil, nil, NULL);
          UIGraphicsEndImageContext();
+         
+         self.collageImage = viewImage;
        }];
     }];
   }

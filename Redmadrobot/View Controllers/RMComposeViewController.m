@@ -15,7 +15,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 @interface RMComposeViewController ()
-
+@property (nonatomic, readwrite) UIImage *collageImage;
 @end
 
 @implementation RMComposeViewController
@@ -112,6 +112,7 @@
        subscribeNext:^(InstagramUser *user) {
          RMCollageViewController *nextStepController = [[RMCollageViewController alloc] initWithCollage:collageController.collageViewModel.collage
                                                                                          productionStep:RMCollageProductionStepPick];
+         nextStepController.collageDelegate = self;
          nextStepController.user = user;
          [self pushViewController:nextStepController animated:YES];
        }];
@@ -122,6 +123,16 @@
     {
       if ([_composeDelegate respondsToSelector:@selector(composeControllerDidFinish:)])
         [_composeDelegate composeControllerDidFinish:self];
+      
+      // Show email controller
+      [[RACObserve(collageController, collageImage)
+       filter:^BOOL(UIImage *collageImage) {
+         return collageImage != nil;
+       }]
+       subscribeNext:^(UIImage *collageImage) {
+         self.collageImage = collageImage;
+       }];
+      
       break;
     }
   }

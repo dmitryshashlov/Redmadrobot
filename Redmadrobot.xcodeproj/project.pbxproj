@@ -17,6 +17,7 @@
 		B69253651A1BA05500502A53 /* RMUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253641A1BA05500502A53 /* RMUserCell.m */; };
 		B6BED93F1A1DF3F20073B5C7 /* RMMediaViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED93E1A1DF3F20073B5C7 /* RMMediaViewModel.m */; };
 		B6BED9421A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */; };
+		B6BED9441A1E44BC0073B5C7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BED9431A1E44BC0073B5C7 /* MessageUI.framework */; };
 		B6CDF76F1A1BA7440006C6BD /* RMAutolayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */; };
 		B6CDF7721A1BAE480006C6BD /* RMAvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7711A1BAE480006C6BD /* RMAvatarView.m */; };
 		B6CDF7781A1C90A00006C6BD /* RMCollage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7771A1C90A00006C6BD /* RMCollage.m */; };
@@ -59,6 +60,7 @@
 		B6BED93E1A1DF3F20073B5C7 /* RMMediaViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMMediaViewModel.m; path = "View Model/RMMediaViewModel.m"; sourceTree = "<group>"; };
 		B6BED9401A1DF43A0073B5C7 /* RMMediaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMMediaCollectionViewCell.h; path = Views/RMMediaCollectionViewCell.h; sourceTree = "<group>"; };
 		B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMMediaCollectionViewCell.m; path = Views/RMMediaCollectionViewCell.m; sourceTree = "<group>"; };
+		B6BED9431A1E44BC0073B5C7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B6CDF76D1A1BA7440006C6BD /* RMAutolayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMAutolayoutCell.h; path = Views/RMAutolayoutCell.h; sourceTree = "<group>"; };
 		B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMAutolayoutCell.m; path = Views/RMAutolayoutCell.m; sourceTree = "<group>"; };
 		B6CDF7701A1BAE480006C6BD /* RMAvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMAvatarView.h; path = Views/RMAvatarView.h; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6BED9441A1E44BC0073B5C7 /* MessageUI.framework in Frameworks */,
 				B6CDF7871A1CA4320006C6BD /* SpriteKit.framework in Frameworks */,
 				4ED1E83652F64CE986D03492 /* libPods-Redmadrobot.a in Frameworks */,
 			);
@@ -111,6 +114,7 @@
 		03B99BD51EC944C6B3C1DAAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B6BED9431A1E44BC0073B5C7 /* MessageUI.framework */,
 				B6CDF7861A1CA4320006C6BD /* SpriteKit.framework */,
 				D1839F66EA114472B15C35F8 /* libPods-Redmadrobot.a */,
 			);

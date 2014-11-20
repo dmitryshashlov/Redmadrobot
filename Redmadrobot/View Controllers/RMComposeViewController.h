@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 #import "RMCollageViewController.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,5 +35,6 @@
 
 @property (nonatomic, readonly) RMCollage *collage;
 @property (nonatomic, unsafe_unretained) id<RMComposeViewControllerDelegate> composeDelegate;
+@property (nonatomic, readonly) UIImage *collageImage;
 
 @end
