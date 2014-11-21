@@ -10,6 +10,7 @@
 
 #import "RMSectorNode.h"
 #import "RMGroupNode.h"
+#import <InstagramKit/InstagramMedia.h>
 
 static CGFloat kDashLength = 10.0f;
 static NSString * const kImageKeypathLowRes = @"lowResolutionImageURL";
