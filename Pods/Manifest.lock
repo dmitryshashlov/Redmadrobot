@@ -1,11 +1,11 @@
 PODS:
   - AFNetworking (2.5.0):
-    - AFNetworking/NSURLConnection
-    - AFNetworking/NSURLSession
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-    - AFNetworking/UIKit
+    - AFNetworking/NSURLConnection (= 2.5.0)
+    - AFNetworking/NSURLSession (= 2.5.0)
+    - AFNetworking/Reachability (= 2.5.0)
+    - AFNetworking/Security (= 2.5.0)
+    - AFNetworking/Serialization (= 2.5.0)
+    - AFNetworking/UIKit (= 2.5.0)
   - AFNetworking/NSURLConnection (2.5.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
@@ -24,19 +24,20 @@ PODS:
   - CrashlyticsFramework (2.2.5.1)
   - InstagramKit (3.5.0):
     - AFNetworking (~> 2.0)
+  - Kiwi (2.3.1)
   - libextobjc (0.4.1):
-    - libextobjc/EXTADT
-    - libextobjc/EXTConcreteProtocol
-    - libextobjc/EXTKeyPathCoding
-    - libextobjc/EXTNil
-    - libextobjc/EXTSafeCategory
-    - libextobjc/EXTScope
-    - libextobjc/EXTSelectorChecking
-    - libextobjc/EXTSynthesize
-    - libextobjc/NSInvocation+EXT
-    - libextobjc/NSMethodSignature+EXT
-    - libextobjc/RuntimeExtensions
-    - libextobjc/UmbrellaHeader
+    - libextobjc/EXTADT (= 0.4.1)
+    - libextobjc/EXTConcreteProtocol (= 0.4.1)
+    - libextobjc/EXTKeyPathCoding (= 0.4.1)
+    - libextobjc/EXTNil (= 0.4.1)
+    - libextobjc/EXTSafeCategory (= 0.4.1)
+    - libextobjc/EXTScope (= 0.4.1)
+    - libextobjc/EXTSelectorChecking (= 0.4.1)
+    - libextobjc/EXTSynthesize (= 0.4.1)
+    - libextobjc/NSInvocation+EXT (= 0.4.1)
+    - libextobjc/NSMethodSignature+EXT (= 0.4.1)
+    - libextobjc/RuntimeExtensions (= 0.4.1)
+    - libextobjc/UmbrellaHeader (= 0.4.1)
   - libextobjc/EXTADT (0.4.1):
     - libextobjc/RuntimeExtensions
   - libextobjc/EXTConcreteProtocol (0.4.1):
@@ -61,7 +62,7 @@ PODS:
   - libextobjc/UmbrellaHeader (0.4.1)
   - PureLayout (1.1.0)
   - ReactiveCocoa (2.3.1):
-    - ReactiveCocoa/UI
+    - ReactiveCocoa/UI (= 2.3.1)
   - ReactiveCocoa/Core (2.3.1):
     - ReactiveCocoa/no-arc
   - ReactiveCocoa/no-arc (2.3.1)
@@ -72,6 +73,7 @@ DEPENDENCIES:
   - AMPAvatarView (~> 1.1)
   - CrashlyticsFramework (~> 2.2)
   - InstagramKit (~> 3.5)
+  - Kiwi
   - libextobjc (~> 0.4)
   - PureLayout (~> 1.0)
   - ReactiveCocoa (~> 2.3)
@@ -81,8 +83,9 @@ SPEC CHECKSUMS:
   AMPAvatarView: ebf1ca9ebec0aa8d1aee9d1a0f4521d1756bf3f0
   CrashlyticsFramework: 195dfef587ade7a3954ce8effd483a3879d35877
   InstagramKit: f96f2e6ec35efe6c2bfc33b63b2ba56d9856c0c9
+  Kiwi: 73e1400209055ee9c8ba78c6012b6b642d0fb9f7
   libextobjc: d6146fce3ebea986b7f75fcb4c967639200b88b0
   PureLayout: c8960fa0f3b40d849d5e177d699d0148faa63b63
   ReactiveCocoa: dca75777b9d18990c8714a3a6f2149f29b4d1462
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.35.0

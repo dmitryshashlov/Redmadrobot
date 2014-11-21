@@ -1,1 +1,0 @@
-../../InstagramKit/InstagramKit/InstagramKit.h

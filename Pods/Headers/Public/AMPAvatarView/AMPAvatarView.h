@@ -1,0 +1,1 @@
+../../../AMPAvatarView/AMPAvatarView/AMPAvatarView.h

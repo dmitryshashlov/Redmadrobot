@@ -17,6 +17,7 @@
 		B692535F1A1B9C7D00502A53 /* InstagramKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = B692535E1A1B9C7D00502A53 /* InstagramKit.plist */; };
 		B69253621A1B9E2900502A53 /* RMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253611A1B9E2900502A53 /* RMSearchViewController.m */; };
 		B69253651A1BA05500502A53 /* RMUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253641A1BA05500502A53 /* RMUserCell.m */; };
+		B6BDB7CF1A1EABE8009AD77A /* RMCollageSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BDB7CE1A1EABE8009AD77A /* RMCollageSpecs.m */; };
 		B6BED9421A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */; };
 		B6BED9441A1E44BC0073B5C7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BED9431A1E44BC0073B5C7 /* MessageUI.framework */; };
 		B6CDF76F1A1BA7440006C6BD /* RMAutolayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */; };
@@ -30,7 +31,7 @@
 		B6D981181A1B5B0400A7A268 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D981171A1B5B0400A7A268 /* main.m */; };
 		B6D9811B1A1B5B0400A7A268 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D9811A1A1B5B0400A7A268 /* AppDelegate.m */; };
 		B6D981231A1B5B0400A7A268 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D981221A1B5B0400A7A268 /* Images.xcassets */; };
-		B6D981321A1B5B0400A7A268 /* RedmadrobotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D981311A1B5B0400A7A268 /* RedmadrobotTests.m */; };
+		F245E8E797684A79B454A952 /* libPods-RedmadrobotTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC45B4995E0644649F7551AF /* libPods-RedmadrobotTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15ABC427DCD900D46B161DDC /* Pods-Redmadrobot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redmadrobot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Redmadrobot/Pods-Redmadrobot.debug.xcconfig"; sourceTree = "<group>"; };
+		2DA6717B5EB2C3C54369E79B /* Pods-RedmadrobotTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedmadrobotTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RedmadrobotTests/Pods-RedmadrobotTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4992214F6B12E6699F5E6500 /* Pods-RedmadrobotTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RedmadrobotTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RedmadrobotTests/Pods-RedmadrobotTests.release.xcconfig"; sourceTree = "<group>"; };
 		B6621A311A1E6962003FE31B /* UIActionSheet+Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIActionSheet+Share.h"; path = "Categories/UIActionSheet+Share.h"; sourceTree = "<group>"; };
 		B6621A321A1E6962003FE31B /* UIActionSheet+Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIActionSheet+Share.m"; path = "Categories/UIActionSheet+Share.m"; sourceTree = "<group>"; };
 		B6621A341A1E6D64003FE31B /* RMCollageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollageCell.h; path = Views/RMCollageCell.h; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 		B69253611A1B9E2900502A53 /* RMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMSearchViewController.m; path = "View Controllers/RMSearchViewController.m"; sourceTree = "<group>"; };
 		B69253631A1BA05500502A53 /* RMUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMUserCell.h; path = Views/RMUserCell.h; sourceTree = "<group>"; };
 		B69253641A1BA05500502A53 /* RMUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMUserCell.m; path = Views/RMUserCell.m; sourceTree = "<group>"; };
+		B6BDB7CE1A1EABE8009AD77A /* RMCollageSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMCollageSpecs.m; sourceTree = "<group>"; };
 		B6BED9401A1DF43A0073B5C7 /* RMMediaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMMediaCollectionViewCell.h; path = Views/RMMediaCollectionViewCell.h; sourceTree = "<group>"; };
 		B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMMediaCollectionViewCell.m; path = Views/RMMediaCollectionViewCell.m; sourceTree = "<group>"; };
 		B6BED9431A1E44BC0073B5C7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -88,9 +93,9 @@
 		B6D981221A1B5B0400A7A268 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B6D9812B1A1B5B0400A7A268 /* RedmadrobotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedmadrobotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6D981301A1B5B0400A7A268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6D981311A1B5B0400A7A268 /* RedmadrobotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedmadrobotTests.m; sourceTree = "<group>"; };
-		C08F3ED861744545A66EB578 /* Pods-Redmadrobot.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redmadrobot.xcconfig"; path = "Pods/Pods-Redmadrobot.xcconfig"; sourceTree = "<group>"; };
+		C6989C3335BDE4A6894D728A /* Pods-Redmadrobot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redmadrobot.release.xcconfig"; path = "Pods/Target Support Files/Pods-Redmadrobot/Pods-Redmadrobot.release.xcconfig"; sourceTree = "<group>"; };
 		D1839F66EA114472B15C35F8 /* libPods-Redmadrobot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Redmadrobot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC45B4995E0644649F7551AF /* libPods-RedmadrobotTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RedmadrobotTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F245E8E797684A79B454A952 /* libPods-RedmadrobotTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +126,7 @@
 				B6BED9431A1E44BC0073B5C7 /* MessageUI.framework */,
 				B6CDF7861A1CA4320006C6BD /* SpriteKit.framework */,
 				D1839F66EA114472B15C35F8 /* libPods-Redmadrobot.a */,
+				DC45B4995E0644649F7551AF /* libPods-RedmadrobotTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -218,8 +225,8 @@
 				B6D981141A1B5B0400A7A268 /* Redmadrobot */,
 				B6D9812E1A1B5B0400A7A268 /* RedmadrobotTests */,
 				B6D981131A1B5B0400A7A268 /* Products */,
-				C08F3ED861744545A66EB578 /* Pods-Redmadrobot.xcconfig */,
 				03B99BD51EC944C6B3C1DAAB /* Frameworks */,
+				D274AB605843A7E07DA220D9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -264,7 +271,7 @@
 		B6D9812E1A1B5B0400A7A268 /* RedmadrobotTests */ = {
 			isa = PBXGroup;
 			children = (
-				B6D981311A1B5B0400A7A268 /* RedmadrobotTests.m */,
+				B6BDB7CE1A1EABE8009AD77A /* RMCollageSpecs.m */,
 				B6D9812F1A1B5B0400A7A268 /* Supporting Files */,
 			);
 			path = RedmadrobotTests;
@@ -276,6 +283,17 @@
 				B6D981301A1B5B0400A7A268 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D274AB605843A7E07DA220D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				15ABC427DCD900D46B161DDC /* Pods-Redmadrobot.debug.xcconfig */,
+				C6989C3335BDE4A6894D728A /* Pods-Redmadrobot.release.xcconfig */,
+				2DA6717B5EB2C3C54369E79B /* Pods-RedmadrobotTests.debug.xcconfig */,
+				4992214F6B12E6699F5E6500 /* Pods-RedmadrobotTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,9 +322,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B6D981381A1B5B0400A7A268 /* Build configuration list for PBXNativeTarget "RedmadrobotTests" */;
 			buildPhases = (
+				EDCF31C2118C44AA86BAA0F0 /* Check Pods Manifest.lock */,
 				B6D981271A1B5B0400A7A268 /* Sources */,
 				B6D981281A1B5B0400A7A268 /* Frameworks */,
 				B6D981291A1B5B0400A7A268 /* Resources */,
+				BE08B35915B1485086FCAAC8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -404,7 +424,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-Redmadrobot-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Redmadrobot/Pods-Redmadrobot-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE08B35915B1485086FCAAC8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RedmadrobotTests/Pods-RedmadrobotTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDCF31C2118C44AA86BAA0F0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -438,7 +488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6D981321A1B5B0400A7A268 /* RedmadrobotTests.m in Sources */,
+				B6BDB7CF1A1EABE8009AD77A /* RMCollageSpecs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,7 +595,7 @@
 		};
 		B6D981361A1B5B0400A7A268 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C08F3ED861744545A66EB578 /* Pods-Redmadrobot.xcconfig */;
+			baseConfigurationReference = 15ABC427DCD900D46B161DDC /* Pods-Redmadrobot.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -561,7 +611,7 @@
 		};
 		B6D981371A1B5B0400A7A268 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C08F3ED861744545A66EB578 /* Pods-Redmadrobot.xcconfig */;
+			baseConfigurationReference = C6989C3335BDE4A6894D728A /* Pods-Redmadrobot.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -577,6 +627,7 @@
 		};
 		B6D981391A1B5B0400A7A268 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DA6717B5EB2C3C54369E79B /* Pods-RedmadrobotTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -596,6 +647,7 @@
 		};
 		B6D9813A1A1B5B0400A7A268 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4992214F6B12E6699F5E6500 /* Pods-RedmadrobotTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <InstagramKit/InstagramMedia.h>
+
+@class InstagramMedia, UIImage;
 
 typedef enum {
   RMCollageProductionStepGrid = 1,

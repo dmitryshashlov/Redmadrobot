@@ -10,7 +10,7 @@ pod 'AMPAvatarView', '~> 1.1'
 pod 'libextobjc', '~> 0.4'
 end
 
-target "RedmadrobotTests" do
-
+target "RedmadrobotTests", :exclusive => true do
+  pod 'Kiwi'
 end
 
