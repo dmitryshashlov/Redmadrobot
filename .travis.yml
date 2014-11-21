@@ -3,5 +3,5 @@ branches:
   only:
     - master
 script:
-  - xctool -workspace Redmadrobot.workspace -scheme Redmadrobot -sdk iphonesimulator -configuration Release ONLY_ACTIVE_ARCH=NO
-  - xctool test -workspace Redmadrobot.workspace -scheme RedmadrobotTests -sdk iphonesimulator -configuration Release ONLY_ACTIVE_ARCH=NO
+  - xctool -workspace Redmadrobot.xcworkspace -scheme Redmadrobot -sdk iphonesimulator -configuration Release ONLY_ACTIVE_ARCH=NO
+  - xctool test -workspace Redmadrobot.xcworkspace -scheme RedmadrobotTests -sdk iphonesimulator -configuration Release ONLY_ACTIVE_ARCH=NO
