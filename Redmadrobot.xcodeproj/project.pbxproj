@@ -1,926 +1,645 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>03B99BD51EC944C6B3C1DAAB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>D1839F66EA114472B15C35F8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>385FA95FEC304B0F8BB99DD2</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>4ED1E83652F64CE986D03492</key>
-		<dict>
-			<key>fileRef</key>
-			<string>D1839F66EA114472B15C35F8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>A076691D402A435B8B642EB9</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Pods-Redmadrobot-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>B6D981091A1B5B0300A7A268</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B6D981141A1B5B0400A7A268</string>
-				<string>B6D9812E1A1B5B0400A7A268</string>
-				<string>B6D981131A1B5B0400A7A268</string>
-				<string>C08F3ED861744545A66EB578</string>
-				<string>03B99BD51EC944C6B3C1DAAB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D9810A1A1B5B0300A7A268</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastUpgradeCheck</key>
-				<string>0610</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Dmitry Shashlov</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>B6D981111A1B5B0300A7A268</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.1</string>
-					</dict>
-					<key>B6D9812A1A1B5B0400A7A268</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.1</string>
-						<key>TestTargetID</key>
-						<string>B6D981111A1B5B0300A7A268</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>B6D9810D1A1B5B0300A7A268</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>B6D981091A1B5B0300A7A268</string>
-			<key>productRefGroup</key>
-			<string>B6D981131A1B5B0400A7A268</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>B6D981111A1B5B0300A7A268</string>
-				<string>B6D9812A1A1B5B0400A7A268</string>
-			</array>
-		</dict>
-		<key>B6D9810D1A1B5B0300A7A268</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>B6D981331A1B5B0400A7A268</string>
-				<string>B6D981341A1B5B0400A7A268</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B6D9810E1A1B5B0300A7A268</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B6D9811E1A1B5B0400A7A268</string>
-				<string>B6D9811B1A1B5B0400A7A268</string>
-				<string>B6D981181A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B6D9810F1A1B5B0300A7A268</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>4ED1E83652F64CE986D03492</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B6D981101A1B5B0300A7A268</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B6D981211A1B5B0400A7A268</string>
-				<string>B6D981261A1B5B0400A7A268</string>
-				<string>B6D981231A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B6D981111A1B5B0300A7A268</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>B6D981351A1B5B0400A7A268</string>
-			<key>buildPhases</key>
-			<array>
-				<string>385FA95FEC304B0F8BB99DD2</string>
-				<string>B6D9810E1A1B5B0300A7A268</string>
-				<string>B6D9810F1A1B5B0300A7A268</string>
-				<string>B6D981101A1B5B0300A7A268</string>
-				<string>A076691D402A435B8B642EB9</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Redmadrobot</string>
-			<key>productName</key>
-			<string>Redmadrobot</string>
-			<key>productReference</key>
-			<string>B6D981121A1B5B0400A7A268</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>B6D981121A1B5B0400A7A268</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Redmadrobot.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>B6D981131A1B5B0400A7A268</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B6D981121A1B5B0400A7A268</string>
-				<string>B6D9812B1A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981141A1B5B0400A7A268</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B6D981191A1B5B0400A7A268</string>
-				<string>B6D9811A1A1B5B0400A7A268</string>
-				<string>B6D9811C1A1B5B0400A7A268</string>
-				<string>B6D9811D1A1B5B0400A7A268</string>
-				<string>B6D9811F1A1B5B0400A7A268</string>
-				<string>B6D981221A1B5B0400A7A268</string>
-				<string>B6D981241A1B5B0400A7A268</string>
-				<string>B6D981151A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Redmadrobot</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981151A1B5B0400A7A268</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B6D981161A1B5B0400A7A268</string>
-				<string>B6D981171A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981161A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981171A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981181A1B5B0400A7A268</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B6D981171A1B5B0400A7A268</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B6D981191A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>AppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D9811A1A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>AppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D9811B1A1B5B0400A7A268</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B6D9811A1A1B5B0400A7A268</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B6D9811C1A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D9811D1A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ViewController.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D9811E1A1B5B0400A7A268</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B6D9811D1A1B5B0400A7A268</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B6D9811F1A1B5B0400A7A268</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B6D981201A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981201A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981211A1B5B0400A7A268</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B6D9811F1A1B5B0400A7A268</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B6D981221A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981231A1B5B0400A7A268</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B6D981221A1B5B0400A7A268</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B6D981241A1B5B0400A7A268</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B6D981251A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>LaunchScreen.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981251A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/LaunchScreen.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981261A1B5B0400A7A268</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B6D981241A1B5B0400A7A268</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B6D981271A1B5B0400A7A268</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B6D981321A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B6D981281A1B5B0400A7A268</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B6D981291A1B5B0400A7A268</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>B6D9812A1A1B5B0400A7A268</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>B6D981381A1B5B0400A7A268</string>
-			<key>buildPhases</key>
-			<array>
-				<string>B6D981271A1B5B0400A7A268</string>
-				<string>B6D981281A1B5B0400A7A268</string>
-				<string>B6D981291A1B5B0400A7A268</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>B6D9812D1A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>RedmadrobotTests</string>
-			<key>productName</key>
-			<string>RedmadrobotTests</string>
-			<key>productReference</key>
-			<string>B6D9812B1A1B5B0400A7A268</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>B6D9812B1A1B5B0400A7A268</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>RedmadrobotTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>B6D9812C1A1B5B0400A7A268</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>B6D9810A1A1B5B0300A7A268</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>B6D981111A1B5B0300A7A268</string>
-			<key>remoteInfo</key>
-			<string>Redmadrobot</string>
-		</dict>
-		<key>B6D9812D1A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>B6D981111A1B5B0300A7A268</string>
-			<key>targetProxy</key>
-			<string>B6D9812C1A1B5B0400A7A268</string>
-		</dict>
-		<key>B6D9812E1A1B5B0400A7A268</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B6D981311A1B5B0400A7A268</string>
-				<string>B6D9812F1A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>RedmadrobotTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D9812F1A1B5B0400A7A268</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>B6D981301A1B5B0400A7A268</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981301A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981311A1B5B0400A7A268</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>RedmadrobotTests.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B6D981321A1B5B0400A7A268</key>
-		<dict>
-			<key>fileRef</key>
-			<string>B6D981311A1B5B0400A7A268</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>B6D981331A1B5B0400A7A268</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.1</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>B6D981341A1B5B0400A7A268</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.1</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1,2</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>B6D981351A1B5B0400A7A268</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>B6D981361A1B5B0400A7A268</string>
-				<string>B6D981371A1B5B0400A7A268</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B6D981361A1B5B0400A7A268</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>C08F3ED861744545A66EB578</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Redmadrobot/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>B6D981371A1B5B0400A7A268</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>C08F3ED861744545A66EB578</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Redmadrobot/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>B6D981381A1B5B0400A7A268</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>B6D981391A1B5B0400A7A268</string>
-				<string>B6D9813A1A1B5B0400A7A268</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>B6D981391A1B5B0400A7A268</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>RedmadrobotTests/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUILT_PRODUCTS_DIR)/Redmadrobot.app/Redmadrobot</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>B6D9813A1A1B5B0400A7A268</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>RedmadrobotTests/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUILT_PRODUCTS_DIR)/Redmadrobot.app/Redmadrobot</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>C08F3ED861744545A66EB578</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods-Redmadrobot.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Pods-Redmadrobot.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>D1839F66EA114472B15C35F8</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods-Redmadrobot.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>B6D9810A1A1B5B0300A7A268</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4ED1E83652F64CE986D03492 /* libPods-Redmadrobot.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1839F66EA114472B15C35F8 /* libPods-Redmadrobot.a */; };
+		B6621A331A1E6962003FE31B /* UIActionSheet+Share.m in Sources */ = {isa = PBXBuildFile; fileRef = B6621A321A1E6962003FE31B /* UIActionSheet+Share.m */; };
+		B6621A361A1E6D64003FE31B /* RMCollageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6621A351A1E6D64003FE31B /* RMCollageCell.m */; };
+		B68669FE1A1CA9C100CEDCA8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B6866A001A1CA9C100CEDCA8 /* Localizable.strings */; };
+		B6866A081A1CCE9A00CEDCA8 /* RMListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6866A071A1CCE9A00CEDCA8 /* RMListViewController.m */; };
+		B6866A0B1A1CEAA700CEDCA8 /* RMSectorNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B6866A0A1A1CEAA700CEDCA8 /* RMSectorNode.m */; };
+		B6866A0E1A1CEAB400CEDCA8 /* RMGroupNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B6866A0D1A1CEAB400CEDCA8 /* RMGroupNode.m */; };
+		B692535F1A1B9C7D00502A53 /* InstagramKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = B692535E1A1B9C7D00502A53 /* InstagramKit.plist */; };
+		B69253621A1B9E2900502A53 /* RMSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253611A1B9E2900502A53 /* RMSearchViewController.m */; };
+		B69253651A1BA05500502A53 /* RMUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B69253641A1BA05500502A53 /* RMUserCell.m */; };
+		B6BED9421A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */; };
+		B6BED9441A1E44BC0073B5C7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BED9431A1E44BC0073B5C7 /* MessageUI.framework */; };
+		B6CDF76F1A1BA7440006C6BD /* RMAutolayoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */; };
+		B6CDF7721A1BAE480006C6BD /* RMAvatarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7711A1BAE480006C6BD /* RMAvatarView.m */; };
+		B6CDF7781A1C90A00006C6BD /* RMCollage.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7771A1C90A00006C6BD /* RMCollage.m */; };
+		B6CDF77B1A1C928D0006C6BD /* RMCollageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF77A1A1C928D0006C6BD /* RMCollageViewModel.m */; };
+		B6CDF77F1A1C9A360006C6BD /* RMCollageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF77E1A1C9A360006C6BD /* RMCollageScene.m */; };
+		B6CDF7821A1C9BA80006C6BD /* RMCollageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7811A1C9BA80006C6BD /* RMCollageViewController.m */; };
+		B6CDF7851A1C9DCC0006C6BD /* RMComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CDF7841A1C9DCC0006C6BD /* RMComposeViewController.m */; };
+		B6CDF7871A1CA4320006C6BD /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6CDF7861A1CA4320006C6BD /* SpriteKit.framework */; };
+		B6D981181A1B5B0400A7A268 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D981171A1B5B0400A7A268 /* main.m */; };
+		B6D9811B1A1B5B0400A7A268 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D9811A1A1B5B0400A7A268 /* AppDelegate.m */; };
+		B6D981231A1B5B0400A7A268 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6D981221A1B5B0400A7A268 /* Images.xcassets */; };
+		B6D981321A1B5B0400A7A268 /* RedmadrobotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B6D981311A1B5B0400A7A268 /* RedmadrobotTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B6D9812C1A1B5B0400A7A268 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B6D9810A1A1B5B0300A7A268 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B6D981111A1B5B0300A7A268;
+			remoteInfo = Redmadrobot;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B6621A311A1E6962003FE31B /* UIActionSheet+Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIActionSheet+Share.h"; path = "Categories/UIActionSheet+Share.h"; sourceTree = "<group>"; };
+		B6621A321A1E6962003FE31B /* UIActionSheet+Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIActionSheet+Share.m"; path = "Categories/UIActionSheet+Share.m"; sourceTree = "<group>"; };
+		B6621A341A1E6D64003FE31B /* RMCollageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollageCell.h; path = Views/RMCollageCell.h; sourceTree = "<group>"; };
+		B6621A351A1E6D64003FE31B /* RMCollageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCollageCell.m; path = Views/RMCollageCell.m; sourceTree = "<group>"; };
+		B68669FF1A1CA9C100CEDCA8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B6866A011A1CA9CA00CEDCA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B6866A061A1CCE9A00CEDCA8 /* RMListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMListViewController.h; path = "View Controllers/RMListViewController.h"; sourceTree = "<group>"; };
+		B6866A071A1CCE9A00CEDCA8 /* RMListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMListViewController.m; path = "View Controllers/RMListViewController.m"; sourceTree = "<group>"; };
+		B6866A091A1CEAA700CEDCA8 /* RMSectorNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMSectorNode.h; path = Scene/RMSectorNode.h; sourceTree = "<group>"; };
+		B6866A0A1A1CEAA700CEDCA8 /* RMSectorNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMSectorNode.m; path = Scene/RMSectorNode.m; sourceTree = "<group>"; };
+		B6866A0C1A1CEAB400CEDCA8 /* RMGroupNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMGroupNode.h; path = Scene/RMGroupNode.h; sourceTree = "<group>"; };
+		B6866A0D1A1CEAB400CEDCA8 /* RMGroupNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMGroupNode.m; path = Scene/RMGroupNode.m; sourceTree = "<group>"; };
+		B692535E1A1B9C7D00502A53 /* InstagramKit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InstagramKit.plist; sourceTree = "<group>"; };
+		B69253601A1B9E2900502A53 /* RMSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMSearchViewController.h; path = "View Controllers/RMSearchViewController.h"; sourceTree = "<group>"; };
+		B69253611A1B9E2900502A53 /* RMSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMSearchViewController.m; path = "View Controllers/RMSearchViewController.m"; sourceTree = "<group>"; };
+		B69253631A1BA05500502A53 /* RMUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMUserCell.h; path = Views/RMUserCell.h; sourceTree = "<group>"; };
+		B69253641A1BA05500502A53 /* RMUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMUserCell.m; path = Views/RMUserCell.m; sourceTree = "<group>"; };
+		B6BED9401A1DF43A0073B5C7 /* RMMediaCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMMediaCollectionViewCell.h; path = Views/RMMediaCollectionViewCell.h; sourceTree = "<group>"; };
+		B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMMediaCollectionViewCell.m; path = Views/RMMediaCollectionViewCell.m; sourceTree = "<group>"; };
+		B6BED9431A1E44BC0073B5C7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B6CDF76D1A1BA7440006C6BD /* RMAutolayoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMAutolayoutCell.h; path = Views/RMAutolayoutCell.h; sourceTree = "<group>"; };
+		B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMAutolayoutCell.m; path = Views/RMAutolayoutCell.m; sourceTree = "<group>"; };
+		B6CDF7701A1BAE480006C6BD /* RMAvatarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMAvatarView.h; path = Views/RMAvatarView.h; sourceTree = "<group>"; };
+		B6CDF7711A1BAE480006C6BD /* RMAvatarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMAvatarView.m; path = Views/RMAvatarView.m; sourceTree = "<group>"; };
+		B6CDF7731A1BAF680006C6BD /* Redmadrobot-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Redmadrobot-prefix.pch"; sourceTree = "<group>"; };
+		B6CDF7761A1C90A00006C6BD /* RMCollage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollage.h; path = Model/RMCollage.h; sourceTree = "<group>"; };
+		B6CDF7771A1C90A00006C6BD /* RMCollage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCollage.m; path = Model/RMCollage.m; sourceTree = "<group>"; };
+		B6CDF7791A1C928D0006C6BD /* RMCollageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollageViewModel.h; path = "View Model/RMCollageViewModel.h"; sourceTree = "<group>"; };
+		B6CDF77A1A1C928D0006C6BD /* RMCollageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCollageViewModel.m; path = "View Model/RMCollageViewModel.m"; sourceTree = "<group>"; };
+		B6CDF77D1A1C9A360006C6BD /* RMCollageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollageScene.h; path = Scene/RMCollageScene.h; sourceTree = "<group>"; };
+		B6CDF77E1A1C9A360006C6BD /* RMCollageScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCollageScene.m; path = Scene/RMCollageScene.m; sourceTree = "<group>"; };
+		B6CDF7801A1C9BA80006C6BD /* RMCollageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMCollageViewController.h; path = "View Controllers/RMCollageViewController.h"; sourceTree = "<group>"; };
+		B6CDF7811A1C9BA80006C6BD /* RMCollageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMCollageViewController.m; path = "View Controllers/RMCollageViewController.m"; sourceTree = "<group>"; };
+		B6CDF7831A1C9DCC0006C6BD /* RMComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RMComposeViewController.h; path = "View Controllers/RMComposeViewController.h"; sourceTree = "<group>"; };
+		B6CDF7841A1C9DCC0006C6BD /* RMComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RMComposeViewController.m; path = "View Controllers/RMComposeViewController.m"; sourceTree = "<group>"; };
+		B6CDF7861A1CA4320006C6BD /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		B6D981121A1B5B0400A7A268 /* Redmadrobot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Redmadrobot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D981161A1B5B0400A7A268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D981171A1B5B0400A7A268 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B6D981191A1B5B0400A7A268 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B6D9811A1A1B5B0400A7A268 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B6D981221A1B5B0400A7A268 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B6D9812B1A1B5B0400A7A268 /* RedmadrobotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RedmadrobotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6D981301A1B5B0400A7A268 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6D981311A1B5B0400A7A268 /* RedmadrobotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedmadrobotTests.m; sourceTree = "<group>"; };
+		C08F3ED861744545A66EB578 /* Pods-Redmadrobot.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redmadrobot.xcconfig"; path = "Pods/Pods-Redmadrobot.xcconfig"; sourceTree = "<group>"; };
+		D1839F66EA114472B15C35F8 /* libPods-Redmadrobot.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Redmadrobot.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B6D9810F1A1B5B0300A7A268 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6BED9441A1E44BC0073B5C7 /* MessageUI.framework in Frameworks */,
+				B6CDF7871A1CA4320006C6BD /* SpriteKit.framework in Frameworks */,
+				4ED1E83652F64CE986D03492 /* libPods-Redmadrobot.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6D981281A1B5B0400A7A268 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03B99BD51EC944C6B3C1DAAB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B6BED9431A1E44BC0073B5C7 /* MessageUI.framework */,
+				B6CDF7861A1CA4320006C6BD /* SpriteKit.framework */,
+				D1839F66EA114472B15C35F8 /* libPods-Redmadrobot.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6621A301A1E6903003FE31B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B6621A311A1E6962003FE31B /* UIActionSheet+Share.h */,
+				B6621A321A1E6962003FE31B /* UIActionSheet+Share.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		B6866A0F1A1CEB0400CEDCA8 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				B6866A091A1CEAA700CEDCA8 /* RMSectorNode.h */,
+				B6866A0A1A1CEAA700CEDCA8 /* RMSectorNode.m */,
+				B6866A0C1A1CEAB400CEDCA8 /* RMGroupNode.h */,
+				B6866A0D1A1CEAB400CEDCA8 /* RMGroupNode.m */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		B692535B1A1B993200502A53 /* View controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B69253601A1B9E2900502A53 /* RMSearchViewController.h */,
+				B69253611A1B9E2900502A53 /* RMSearchViewController.m */,
+				B6CDF7801A1C9BA80006C6BD /* RMCollageViewController.h */,
+				B6CDF7811A1C9BA80006C6BD /* RMCollageViewController.m */,
+				B6CDF7831A1C9DCC0006C6BD /* RMComposeViewController.h */,
+				B6CDF7841A1C9DCC0006C6BD /* RMComposeViewController.m */,
+				B6866A061A1CCE9A00CEDCA8 /* RMListViewController.h */,
+				B6866A071A1CCE9A00CEDCA8 /* RMListViewController.m */,
+			);
+			name = "View controllers";
+			sourceTree = "<group>";
+		};
+		B692535C1A1B993800502A53 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B6CDF7701A1BAE480006C6BD /* RMAvatarView.h */,
+				B6CDF7711A1BAE480006C6BD /* RMAvatarView.m */,
+				B6CDF76C1A1BA7310006C6BD /* Cells */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B6CDF76C1A1BA7310006C6BD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B69253631A1BA05500502A53 /* RMUserCell.h */,
+				B69253641A1BA05500502A53 /* RMUserCell.m */,
+				B6CDF76D1A1BA7440006C6BD /* RMAutolayoutCell.h */,
+				B6CDF76E1A1BA7440006C6BD /* RMAutolayoutCell.m */,
+				B6BED9401A1DF43A0073B5C7 /* RMMediaCollectionViewCell.h */,
+				B6BED9411A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m */,
+				B6621A341A1E6D64003FE31B /* RMCollageCell.h */,
+				B6621A351A1E6D64003FE31B /* RMCollageCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		B6CDF7741A1C90040006C6BD /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6CDF7791A1C928D0006C6BD /* RMCollageViewModel.h */,
+				B6CDF77A1A1C928D0006C6BD /* RMCollageViewModel.m */,
+			);
+			name = "View Model";
+			sourceTree = "<group>";
+		};
+		B6CDF7751A1C908E0006C6BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6CDF7761A1C90A00006C6BD /* RMCollage.h */,
+				B6CDF7771A1C90A00006C6BD /* RMCollage.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		B6CDF77C1A1C99BD0006C6BD /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				B6866A0F1A1CEB0400CEDCA8 /* Nodes */,
+				B6CDF77D1A1C9A360006C6BD /* RMCollageScene.h */,
+				B6CDF77E1A1C9A360006C6BD /* RMCollageScene.m */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
+		B6D981091A1B5B0300A7A268 = {
+			isa = PBXGroup;
+			children = (
+				B6D981141A1B5B0400A7A268 /* Redmadrobot */,
+				B6D9812E1A1B5B0400A7A268 /* RedmadrobotTests */,
+				B6D981131A1B5B0400A7A268 /* Products */,
+				C08F3ED861744545A66EB578 /* Pods-Redmadrobot.xcconfig */,
+				03B99BD51EC944C6B3C1DAAB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B6D981131A1B5B0400A7A268 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B6D981121A1B5B0400A7A268 /* Redmadrobot.app */,
+				B6D9812B1A1B5B0400A7A268 /* RedmadrobotTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B6D981141A1B5B0400A7A268 /* Redmadrobot */ = {
+			isa = PBXGroup;
+			children = (
+				B6621A301A1E6903003FE31B /* Categories */,
+				B6CDF77C1A1C99BD0006C6BD /* Scene */,
+				B6CDF7751A1C908E0006C6BD /* Model */,
+				B6CDF7741A1C90040006C6BD /* View Model */,
+				B692535C1A1B993800502A53 /* Views */,
+				B692535B1A1B993200502A53 /* View controllers */,
+				B6D981191A1B5B0400A7A268 /* AppDelegate.h */,
+				B6D9811A1A1B5B0400A7A268 /* AppDelegate.m */,
+				B6D981221A1B5B0400A7A268 /* Images.xcassets */,
+				B6D981151A1B5B0400A7A268 /* Supporting Files */,
+			);
+			path = Redmadrobot;
+			sourceTree = "<group>";
+		};
+		B6D981151A1B5B0400A7A268 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6D981161A1B5B0400A7A268 /* Info.plist */,
+				B6D981171A1B5B0400A7A268 /* main.m */,
+				B692535E1A1B9C7D00502A53 /* InstagramKit.plist */,
+				B6CDF7731A1BAF680006C6BD /* Redmadrobot-prefix.pch */,
+				B6866A001A1CA9C100CEDCA8 /* Localizable.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B6D9812E1A1B5B0400A7A268 /* RedmadrobotTests */ = {
+			isa = PBXGroup;
+			children = (
+				B6D981311A1B5B0400A7A268 /* RedmadrobotTests.m */,
+				B6D9812F1A1B5B0400A7A268 /* Supporting Files */,
+			);
+			path = RedmadrobotTests;
+			sourceTree = "<group>";
+		};
+		B6D9812F1A1B5B0400A7A268 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B6D981301A1B5B0400A7A268 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B6D981111A1B5B0300A7A268 /* Redmadrobot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6D981351A1B5B0400A7A268 /* Build configuration list for PBXNativeTarget "Redmadrobot" */;
+			buildPhases = (
+				385FA95FEC304B0F8BB99DD2 /* Check Pods Manifest.lock */,
+				B6D9810E1A1B5B0300A7A268 /* Sources */,
+				B6D9810F1A1B5B0300A7A268 /* Frameworks */,
+				B6D981101A1B5B0300A7A268 /* Resources */,
+				A076691D402A435B8B642EB9 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Redmadrobot;
+			productName = Redmadrobot;
+			productReference = B6D981121A1B5B0400A7A268 /* Redmadrobot.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B6D9812A1A1B5B0400A7A268 /* RedmadrobotTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6D981381A1B5B0400A7A268 /* Build configuration list for PBXNativeTarget "RedmadrobotTests" */;
+			buildPhases = (
+				B6D981271A1B5B0400A7A268 /* Sources */,
+				B6D981281A1B5B0400A7A268 /* Frameworks */,
+				B6D981291A1B5B0400A7A268 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B6D9812D1A1B5B0400A7A268 /* PBXTargetDependency */,
+			);
+			name = RedmadrobotTests;
+			productName = RedmadrobotTests;
+			productReference = B6D9812B1A1B5B0400A7A268 /* RedmadrobotTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B6D9810A1A1B5B0300A7A268 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "Dmitry Shashlov";
+				TargetAttributes = {
+					B6D981111A1B5B0300A7A268 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					B6D9812A1A1B5B0400A7A268 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = B6D981111A1B5B0300A7A268;
+					};
+				};
+			};
+			buildConfigurationList = B6D9810D1A1B5B0300A7A268 /* Build configuration list for PBXProject "Redmadrobot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ru,
+			);
+			mainGroup = B6D981091A1B5B0300A7A268;
+			productRefGroup = B6D981131A1B5B0400A7A268 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B6D981111A1B5B0300A7A268 /* Redmadrobot */,
+				B6D9812A1A1B5B0400A7A268 /* RedmadrobotTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B6D981101A1B5B0300A7A268 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B692535F1A1B9C7D00502A53 /* InstagramKit.plist in Resources */,
+				B68669FE1A1CA9C100CEDCA8 /* Localizable.strings in Resources */,
+				B6D981231A1B5B0400A7A268 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6D981291A1B5B0400A7A268 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		385FA95FEC304B0F8BB99DD2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A076691D402A435B8B642EB9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Redmadrobot-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B6D9810E1A1B5B0300A7A268 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B69253621A1B9E2900502A53 /* RMSearchViewController.m in Sources */,
+				B6CDF77B1A1C928D0006C6BD /* RMCollageViewModel.m in Sources */,
+				B6866A0E1A1CEAB400CEDCA8 /* RMGroupNode.m in Sources */,
+				B6CDF76F1A1BA7440006C6BD /* RMAutolayoutCell.m in Sources */,
+				B6866A081A1CCE9A00CEDCA8 /* RMListViewController.m in Sources */,
+				B6CDF7781A1C90A00006C6BD /* RMCollage.m in Sources */,
+				B69253651A1BA05500502A53 /* RMUserCell.m in Sources */,
+				B6CDF7821A1C9BA80006C6BD /* RMCollageViewController.m in Sources */,
+				B6866A0B1A1CEAA700CEDCA8 /* RMSectorNode.m in Sources */,
+				B6621A331A1E6962003FE31B /* UIActionSheet+Share.m in Sources */,
+				B6D9811B1A1B5B0400A7A268 /* AppDelegate.m in Sources */,
+				B6CDF7721A1BAE480006C6BD /* RMAvatarView.m in Sources */,
+				B6621A361A1E6D64003FE31B /* RMCollageCell.m in Sources */,
+				B6CDF77F1A1C9A360006C6BD /* RMCollageScene.m in Sources */,
+				B6BED9421A1DF43A0073B5C7 /* RMMediaCollectionViewCell.m in Sources */,
+				B6D981181A1B5B0400A7A268 /* main.m in Sources */,
+				B6CDF7851A1C9DCC0006C6BD /* RMComposeViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6D981271A1B5B0400A7A268 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D981321A1B5B0400A7A268 /* RedmadrobotTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B6D9812D1A1B5B0400A7A268 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B6D981111A1B5B0300A7A268 /* Redmadrobot */;
+			targetProxy = B6D9812C1A1B5B0400A7A268 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B6866A001A1CA9C100CEDCA8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B68669FF1A1CA9C100CEDCA8 /* ru */,
+				B6866A011A1CA9CA00CEDCA8 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B6D981331A1B5B0400A7A268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B6D981341A1B5B0400A7A268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B6D981361A1B5B0400A7A268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C08F3ED861744545A66EB578 /* Pods-Redmadrobot.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = "Redmadrobot/Redmadrobot-prefix.pch";
+				INFOPLIST_FILE = Redmadrobot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos8.1;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B6D981371A1B5B0400A7A268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C08F3ED861744545A66EB578 /* Pods-Redmadrobot.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PREFIX_HEADER = "Redmadrobot/Redmadrobot-prefix.pch";
+				INFOPLIST_FILE = Redmadrobot/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos8.1;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B6D981391A1B5B0400A7A268 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RedmadrobotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redmadrobot.app/Redmadrobot";
+			};
+			name = Debug;
+		};
+		B6D9813A1A1B5B0400A7A268 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RedmadrobotTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Redmadrobot.app/Redmadrobot";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B6D9810D1A1B5B0300A7A268 /* Build configuration list for PBXProject "Redmadrobot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D981331A1B5B0400A7A268 /* Debug */,
+				B6D981341A1B5B0400A7A268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6D981351A1B5B0400A7A268 /* Build configuration list for PBXNativeTarget "Redmadrobot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D981361A1B5B0400A7A268 /* Debug */,
+				B6D981371A1B5B0400A7A268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6D981381A1B5B0400A7A268 /* Build configuration list for PBXNativeTarget "RedmadrobotTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6D981391A1B5B0400A7A268 /* Debug */,
+				B6D9813A1A1B5B0400A7A268 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B6D9810A1A1B5B0300A7A268 /* Project object */;
+}

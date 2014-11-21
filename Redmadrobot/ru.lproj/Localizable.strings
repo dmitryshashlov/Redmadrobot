@@ -1,0 +1,25 @@
+/*
+ Localizable.strings
+ Redmadrobot
+ 
+ Created by Dmitry Shashlov on 11/19/14.
+ Copyright (c) 2014 Dmitry Shashlov. All rights reserved.
+ */
+"Grid size" = "Размер сетки";
+"Wireframe" = "Разметка";
+"Pick" = "Пикер";
+"Save to Camera Roll" = "Сохранить в галерею";
+"Send via email" = "Отправить email'ом";
+"Cancel" = "Отмена";
+"Search user by name" = "Имя пользователя";
+"Next" = "Далее";
+"Share" = "Поделиться";
+"Back" = "Назад";
+"New" = "Добавить";
+"Instagram collage" = "Instagram коллаж";
+"What a great collage!" = "Какой чудесный коллаж!";
+"Mail account" = "Аккаунт в Mail";
+"Please configure Mail account to be able to send emails\n\nWould you like to save collage to Camera Roll?" = "Пожалуйста, добавьте аккаунт в приложении Mail для того, чтобы иметь возможность отправить коллаж по email'у\n\nСохранить коллаж в галерею?";
+"More" = "Еще";
+"Collages" = "Коллажи";
+"Loading.." = "Загрузка..";
