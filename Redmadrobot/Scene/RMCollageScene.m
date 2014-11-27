@@ -199,6 +199,7 @@ CGSize kCollageSize = { 288.0f , 288.0f };
         CGFloat phase = arc4random_uniform(kDashLength * sizeof(pattern) / sizeof(CGFloat));
         CGPathRef dashed = CGPathCreateCopyByDashingPath(lineNode.path, NULL, phase, pattern, 2);
         lineNode.path = dashed;
+        CGPathRelease(dashed);
       }
       break;
     }
@@ -428,10 +429,6 @@ CGSize kCollageSize = { 288.0f , 288.0f };
   UIColor *color = [_colors objectForKey:key];
   if (!color)
   {
-    color = [UIColor colorWithRed:arc4random_uniform(255.0f) / 255.0f
-                            green:arc4random_uniform(255.0f) / 255.0f
-                             blue:arc4random_uniform(255.0f) / 255.0f
-                            alpha:0.5f];
     color = [UIColor whiteColor];
     [_colors setObject:color forKey:key];
   }
